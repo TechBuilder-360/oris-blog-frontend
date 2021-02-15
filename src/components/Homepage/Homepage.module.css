@@ -1,0 +1,82 @@
+
+  
+
+  .div{
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  color: black;
+  }
+  
+  
+  
+  
+      
+  
+  .Main{
+     
+    border-radius: 6px;
+    margin-top: 40px;
+      
+      
+  }
+.subMain{
+    background-color: rgb(182, 180, 180);
+    
+    text-align: center;
+     
+}
+.sidebar{
+    margin: -15px;
+    margin-top: 20px;
+   color:rgb(92, 91, 91)
+}
+
+.sidebar ul li{
+   padding:7px;
+
+    list-style: none;
+    font-size: 15pt;
+}
+.sidebar ul li:hover{
+    cursor: pointer;
+    color:white;
+    background-color: rgb(146, 146, 146);
+}
+  
+  .Main_Content{
+    
+      background-color: rgb(207, 205, 205);
+      height: 470px;
+      
+     
+  }
+  .button_component{
+      margin-left: 30px;
+
+  }
+  
+  .button_component button{
+      margin: 5px;
+      background-color: rgb(170, 168, 168);
+      border-width: 0px;
+      color:rgb(70, 69, 69);
+      text-align: center;
+      width: 100px;
+  }
+  
+  /* Desktop view */
+  @media (min-width: 800px){
+      
+      .Main {
+          height: 620px;
+          overflow: scroll;
+          text-align: left;
+          height: 90vh;
+      }
+  
+      ::-webkit-scrollbar{
+      width: 0px;
+          background: transparent;
+      }
+  }

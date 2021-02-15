@@ -1,0 +1,71 @@
+.Nav {
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 2px;
+    text-align: center;
+    background-color: #c9c7c7;
+}
+
+.Nav_item {
+    float: none;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0;
+    padding-top: 1px;
+}
+
+.Nav_item > a{
+    font-size: 15px;
+    float: none;
+    padding: 2px 2px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #222222;
+}
+
+.Nav_item > a:hover{
+    text-decoration: none;
+    color: #fcf8f8c0;
+}
+
+.Nav_item > a:active{
+    text-decoration: none;
+    color: green;
+}
+
+.Logo{
+    padding: 0;
+    height: 70%;
+}
+
+
+@media (min-width: 760px){
+    .Nav {
+        width: 100%;
+        height: 100px;
+        box-sizing: border-box;
+        padding: 6px 90px;
+        text-align: unset;
+        border-bottom: #7e7c7c;
+    }
+
+    .Logo{
+        display: inline-block;
+        height: 100%;
+    }
+    
+    .Nav_item {
+        position: absolute;
+        top: 28px;
+        right: 90px;
+        float: right;
+    }
+
+    .Nav_item > a{
+        padding: 10px 15px;
+        cursor: pointer;
+        text-align: right;
+    }
+}
