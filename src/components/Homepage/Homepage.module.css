@@ -17,7 +17,7 @@
      
     border-radius: 6px;
     margin-top: 40px;
-      
+    height: 70vh;
       
   }
 .subMain{
@@ -25,6 +25,17 @@
     
     text-align: center;
      
+}
+.link{
+    color: rgb(119, 118, 118);
+    text-decoration: none;
+
+}
+
+.link:hover{
+    color: rgb(150, 148, 148);
+    text-decoration: none;
+
 }
 .sidebar{
     margin: -15px;
@@ -47,32 +58,17 @@
   .Main_Content{
     
       background-color: rgb(207, 205, 205);
-      height: 470px;
-      
-     
-  }
-  .button_component{
-      margin-left: 30px;
-
   }
   
-  .button_component button{
-      margin: 5px;
-      background-color: rgb(170, 168, 168);
-      border-width: 0px;
-      color:rgb(70, 69, 69);
-      text-align: center;
-      width: 100px;
-  }
   
   /* Desktop view */
-  @media (min-width: 800px){
+  @media (max-width: 769px){
       
       .Main {
-          height: 620px;
+          
           overflow: scroll;
           text-align: left;
-          height: 90vh;
+          height: 135vh;
       }
   
       ::-webkit-scrollbar{

@@ -2,27 +2,32 @@ import React from "react";
 import { Col, Container, Row ,Button} from "react-bootstrap";
 import classes from "./Homepage.module.css";
 import Post from '../Post/Post'
+import {Switch,Route,Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import Category from "../Category/Category";
 
 
-const Homepage = () => {
+const Homepage = (props) => {
   
-  const Category=["Art","Music","Politics","History","Biology","Science"]
-
+  
   return (
     <Container>   
-     <Col md={12} className={classes.Main}>
-     <Row>
+     
+     <Row className={classes.Main}>
             <Col md={3} className={classes.subMain}>
             <div className={classes.sidebar}>
             <h5>Topics</h5>
            
             <div>
               <ul>
-              {Category.map((cat,index)=>
-            <li>
+              {props.category.map((cat,index)=>
+            <Link to={`cat/${index}`} key={index} className={classes.link}>
+             <li key={index}>
               {cat}
             </li>
             
+            </Link>
+           
             
                ) }
               </ul>
@@ -31,21 +36,14 @@ const Homepage = () => {
             </div>
             </Col>
             <Col md={9} className={classes.Main_Content}>
-            <div className={classes.sidebar}>
-            <h5 style={{marginLeft:'30px'}}>Recent Posts</h5>
-            
-            <Post/>
-            <div className={classes.button_component}>
-              <Button variant='secondary'>Previous</Button>
-              <Button variant='secondary'>Next</Button>
-            </div>
-            <div>
-            
-            </div>
-            </div>
+              <Switch>
+                <Route exact path='/'component={Post} />
+                <Route path='cat/:index' component={Category} />
+              </Switch>
+          
             </Col>
       </Row>
-     </Col>
+     
      
           
         
@@ -53,4 +51,11 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+const mapStateToProps = (state) => {
+  return {
+    post: state.blog.post,
+    category:state.blog.categories
+  };
+};
+
+export default connect(mapStateToProps)(Homepage);

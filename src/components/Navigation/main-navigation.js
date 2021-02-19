@@ -9,7 +9,7 @@ import { Button } from "react-bootstrap";
 
 const HomeNavBar = () => {
   return (
-    <Container>
+    <div>
       <nav className={classes.Nav}>
        <Link to='/'>
          <img src={logo} className={classes.Logo} alt="Oris"/></Link>
@@ -23,7 +23,7 @@ const HomeNavBar = () => {
       </nav>
 
 
-    </Container>
+    </div>
   );
 };
 
