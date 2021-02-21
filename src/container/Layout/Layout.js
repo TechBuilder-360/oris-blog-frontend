@@ -16,23 +16,26 @@ const Layout=()=>{
         <Switch style={{ paddingLeft: "0" }}>
           <Route exact path="/" component={Homepage}/>
           <Route path="/create" component={CreatePostPage}/>
+            <Route path="/:index" component={null}/>
           <Route path="*" component={Error404} />
         </Switch>
       );
 
         return (
 <Container>
-    <Row>
+  
+    
     <Col md={12}>
              <div className="pull-right">
                    <SearchBox/>
              </div>
         </Col>
-                <Col md={12} className={classes.section}>
+                <Col  className={classes.section}>
+                  
                 <Wrapper>{routes}</Wrapper>
                   
                    </Col>
-    </Row>
+  
 </Container>
            
                 

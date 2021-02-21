@@ -2,57 +2,67 @@
 import * as actionType from "../actions/actionType";
 
 const initialState = {
+  categories:['Science',"Art","Biology","Agriculture","Economics","History","Music"],
   post:[
+   
         {
-              id:"1",
+          Category_1d:'0',
               header:"post one",
               body:" this is the body",
+              image:[],
+             
               created_at:"2/2/2021",
-              tags:[{tag:'laravel'},
-              {tag:'javascript'}],
-              likes:[{
-                    id:"1",
-                    like:"1"
-              }],
-              comment:[{
-                    id:"1",
-                    body:"hi",
-                    created_at:"2/2/2021"
-              }]
+              tags:['laravel','javascript'],
+            
+             
 
 
         },
       
         {
-            id:"2",
+          Category_id:'1',
+           
             header:"post two",
             body:" this is the body",
+            image:[],
+           
             created_at: '2/2/2021',
-            tags:[{tag:'laravel'},
-            {tags:"javascript"}],
-            likes:[{
-                  id:"2",
-                  like:"2"
-            }],
-            comment:[{
-                  id:"2",
-                  body:"hello",
-                  created_at:"2/2/2021"
-            }]
-
+            tags:['laravel',"javascript"],
+           
+           
 
       },
     
-      
-      
-      ],
+      {
+        Category_id:'3',
+         
+          header:"post two",
+          body:" this is the body",
+          image:[],
+          
+          created_at: '2/2/2021',
+          tags:['laravel','javascript'],
+          
 
-  message: {
-    messages: [],
-    alert: "",
+
+    },
+    {
+      Category_id:'1',
+        
+        header:"post two",
+        body:" this is the body",
+        image:[],
+       
+        created_at: '2/2/2021',
+        tags:['laravel',"javascript"],
+        
+
+
   },
-  redirect: false,
-};
+      
+      ]
+
+    }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -69,7 +79,7 @@ const reducer = (state = initialState, action) => {
     case actionType.ADD_POST:
       return {
         ...state,
-        post: [...state.post, action.post],
+        post: [...state.post, action.payload],
       };
    
     case actionType.DELETE_POST:

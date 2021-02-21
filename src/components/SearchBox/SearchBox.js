@@ -1,11 +1,11 @@
 import React from 'react'
-import {Form,Container,Row,Col} from 'react-bootstrap'
+import {Form,Row,Col} from 'react-bootstrap'
 import classes from './SearchBox.module.css'
 
 const SearchBox=()=>{
 
 return(
-<Container className={classes.btn}>
+<div className={classes.btn}>
 <Row>
       <Col md={9}></Col><Col md={3}>
       <Form>
@@ -16,7 +16,7 @@ return(
 </Row>
 
 
-</Container>
+</div>
 
 );
 };
