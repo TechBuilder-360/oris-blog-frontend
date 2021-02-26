@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import {Tooltip,Row,Col,Form,Button,Image} from 'react-bootstrap'
 import {add_post} from '../../store/actions/blogAction'
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
 import { faPlus,faCamera } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +10,7 @@ import {connect} from 'react-redux'
 import classes from './CreatePostPage.module.css'
 const CreatePostPage=(props)=>{
 let posts={
-      category_id:null,
+      
       header:'',
       body:'',
       image:[],
@@ -22,11 +24,11 @@ const [image,setImage]=useState('')
 const [imaget,setImaget]=useState([])
 const [title,setTitle]=useState('')
 const [body,setBody]=useState('')
-const [catid,setCatId]=useState(null)
+
 
 function submit(){
      posts={
-           category_id:catid,
+           
             header:title,
             body:body,
             image:imaget,
@@ -47,14 +49,16 @@ setVal('')
 
 }
 
-function addClick(e){
+function addClick(){
 const value=val.toUpperCase()
      if(tags.find(tag=>tag.toUpperCase()===value)){
                    setVal('')
                     return;
                    }
              setTags([...tags,value])
+             
                   setVal('')
+                  
       }
 function deleteTag(i){
            const newTags=[...tags]
@@ -82,16 +86,7 @@ onChange={(e)=>setTitle(e.target.value)}
 </Col>
 
 <Col>
-<Form.Label>Select Category:</Form.Label>
-<Form.Control as="select" className={classes.input} 
- onChange={(e)=>setCatId(e.target.value)} >
-      <option disabled>SELECT</option>
-      {props.category.map((cat,index)=>
-      
-      <option key={index} value={index}>{cat}</option>
-      )}
 
-</Form.Control>
 </Col>
          </Row>  
          </Form.Group>
@@ -108,9 +103,8 @@ onChange={(e)=>setTitle(e.target.value)}
                            <div className={classes.div}>
                                  {image==''?'':
 
-<Image src={image} rounded fluid />
-}
-                           
+                  <Image src={image} rounded fluid />
+                                                }
                            <Form.Label className={classes.upload_btn}>
                            <Form.Control type="file" value='' 
                            onChange={(e)=>{
@@ -118,51 +112,50 @@ onChange={(e)=>setTitle(e.target.value)}
                   setImaget(e.target.files[0])
                            }
                         }/>
-
                            <FontAwesomeIcon icon={faCamera}/>
                            </Form.Label>
-                        
-                        
-                                  </div>
-                           
-                           
-                           
-                                
-                                    
-
-                              
-
-                                    
+                                  </div>                                            
                                       </Col>
                                       </Form.Group>
                                       <Form.Group>
-                       <Col >
+                                            <Col>
                            
-<Form.Label>
-      Articles
-</Form.Label>
+                                          <Form.Label>
+                                            Articles
+                                                </Form.Label>
 
-<Form.Control as='textarea' value={body} rows={4} name="body" className={classes.input}
-onChange={(e)=>setBody(e.target.value)}
 
-/>
-
-                           
-                       
+                                                <CKEditor
+                    editor={ ClassicEditor }
+                    data=""
+                    
+                    onChange={ ( event, editor ) => {
+                        const data = editor.getData();
+                        setBody(data)
+                    } }
+                />                             
                        </Col>
                        </Form.Group> 
-
-
-                       
                        <Form.Group>
                                    <Form.Label>
                                          Tags:
                                    </Form.Label>
                                    <Row>
                              <Col>
-                             
-<Form.Control type="text" value={val} className={classes.input} 
-name='tags' onChange={(e)=>setVal(e.target.value)}/>
+      <Form.Control as="select" className={classes.input} 
+ onChange={(e)=>
+       setVal(e.target.value)
+      
+ } >
+      <option disabled>SELECT</option>
+      {props.category.map((cat,index)=>
+      
+      <option key={index} value={cat}>{cat}</option>
+      )}
+
+</Form.Control>
+                          
+
 <ul className={classes.tag}>
 
 {tags.map((tag,index)=>
