@@ -38,6 +38,11 @@
       list-style:none;
       
 }
+.max{
+      font-size: smaller;
+      color:rgb(192, 191, 191);
+      font-style: italic;
+}
 .div{
       background-color: rgb(236, 232, 232);
       width: 140px;

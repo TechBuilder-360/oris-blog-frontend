@@ -51,15 +51,16 @@ setVal('')
 
 function addClick(){
 const value=val.toUpperCase()
+if(tags.length > 1){
+      alert('maximum of two can be selected')
+      return null;
+}
      if(tags.find(tag=>tag.toUpperCase()===value)){
-                   setVal('')
                     return;
                    }
-             setTags([...tags,value])
-             
-                  setVal('')
-                  
+             setTags([...tags,value])     
       }
+
 function deleteTag(i){
            const newTags=[...tags]
             newTags.splice(i,1)
@@ -86,25 +87,15 @@ onChange={(e)=>setTitle(e.target.value)}
 </Col>
 
 <Col>
-
 </Col>
          </Row>  
          </Form.Group>
-
          <Form.Group>
                <Col md={12} >
-               
-               
-         
-      
                      <Form.Label>Cover Image</Form.Label>
-                     
-                     
                            <div className={classes.div}>
                                  {image==''?'':
-
-                  <Image src={image} rounded fluid />
-                                                }
+                  <Image src={image} rounded fluid />                                  }
                            <Form.Label className={classes.upload_btn}>
                            <Form.Control type="file" value='' 
                            onChange={(e)=>{
@@ -119,16 +110,13 @@ onChange={(e)=>setTitle(e.target.value)}
                                       </Form.Group>
                                       <Form.Group>
                                             <Col>
-                           
                                           <Form.Label>
                                             Articles
                                                 </Form.Label>
-
-
                                                 <CKEditor
                     editor={ ClassicEditor }
-                    data=""
                     
+                    data=""
                     onChange={ ( event, editor ) => {
                         const data = editor.getData();
                         setBody(data)
@@ -138,7 +126,9 @@ onChange={(e)=>setTitle(e.target.value)}
                        </Form.Group> 
                        <Form.Group>
                                    <Form.Label>
-                                         Tags:
+                                        <b>Tags:  </b> <span className={classes.max}><i>
+                                              max 2 can be selected</i>
+                              <span style={{ color:'red' }}>*</span></span>
                                    </Form.Label>
                                    <Row>
                              <Col>
@@ -154,16 +144,12 @@ onChange={(e)=>setTitle(e.target.value)}
       )}
 
 </Form.Control>
-                          
-
 <ul className={classes.tag}>
-
 {tags.map((tag,index)=>
           <li key={index} onClick={()=>deleteTag(index)}>
                 {tag}
           </li>                
                             )}
-      
 </ul></Col>
                              <Col>
         <Button variant="secondary" onClick={addClick}><FontAwesomeIcon icon={faPlus} />Add</Button>
@@ -177,9 +163,6 @@ onChange={(e)=>setTitle(e.target.value)}
 
                                   </Form.Group>
                             </Form>             
-                 
-               
-
             </div>
       )
 
