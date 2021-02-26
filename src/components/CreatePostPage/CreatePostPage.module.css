@@ -21,11 +21,12 @@
 }
 .tag li{
       display: inline-block;
-      padding:7px;
+      font-size: 7pt;
+      padding:4px;
       margin: 6px;
       color:rgb(71, 71, 71);
       background-color: rgb(177, 177, 177);
-      border-radius: 20px;
+      border-radius: 3px;
       border-width: 0px;
 }
 .tag li:hover{

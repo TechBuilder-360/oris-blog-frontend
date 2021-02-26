@@ -8,10 +8,8 @@ const SwitchDiv=()=>{
       return(
             <div>
             <Switch>
-            
-           
-            <Route path='/category/:id' component={Category} />
-            <Route exact path='/'component={Post} />
+            <Route exact path='/:slut' component={Category} />
+            <Route  path='/'component={Post} />
             
             </Switch>
             </div>

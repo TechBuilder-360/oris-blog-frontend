@@ -9,11 +9,11 @@ import { faPlus,faCamera } from "@fortawesome/free-solid-svg-icons";
 import {connect} from 'react-redux'
 import classes from './CreatePostPage.module.css'
 const CreatePostPage=(props)=>{
-let posts={
+let post={
       
       header:'',
       body:'',
-      image:[],
+      image:'',
       tags:[],
 
 }
@@ -27,16 +27,14 @@ const [body,setBody]=useState('')
 
 
 function submit(){
-     posts={
-           
+     post={
             header:title,
             body:body,
-            image:imaget,
+            image:image,
             tags:tags,
       }
-      console.log(posts)
-
-      dispatch(add_post(posts))
+      console.log(post)
+      dispatch(add_post(post))
 }   
 
 function clearBox(){
@@ -126,8 +124,9 @@ onChange={(e)=>setTitle(e.target.value)}
                        </Form.Group> 
                        <Form.Group>
                                    <Form.Label>
-                                        <b>Tags:  </b> <span className={classes.max}><i>
-                                              max 2 can be selected</i>
+                                        <b>Tags:  </b>
+                                         <span className={classes.max}>(<i>
+                                              max 2 can be selected</i>)
                               <span style={{ color:'red' }}>*</span></span>
                                    </Form.Label>
                                    <Row>

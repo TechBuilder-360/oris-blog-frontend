@@ -22,7 +22,6 @@
   }
 .subMain{
     background-color: rgb(182, 180, 180);
-    
     text-align: center;
      
 }
@@ -38,14 +37,14 @@
 
 }
 .sidebar{
-    margin: -15px;
+    margin: -55px;
     margin-top: 20px;
    color:rgb(92, 91, 91)
 }
 
 .sidebar ul li{
    padding:7px;
-
+   text-align: left;
     list-style: none;
     font-size: 15pt;
 }

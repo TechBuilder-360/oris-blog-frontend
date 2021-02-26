@@ -11,7 +11,7 @@ const Post = (props) => {
       <h5 style={{ marginLeft: "30px" }}>Recent Posts</h5>
 
       {props.post.map((post, index) => (
-        <Link to={`/${index}`} key={index} className={classes.link}>
+        <Link to={`post/${index}`} key={index} className={classes.link}>
           <div className={classes.post_body}>
             <div style={{ float: "left" }}>
               <Circle />

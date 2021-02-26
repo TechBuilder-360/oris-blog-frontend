@@ -1,10 +1,10 @@
 import React from "react";
 import { Col, Container, Row ,Button} from "react-bootstrap";
 import classes from "./Homepage.module.css";
-import Post from '../Post/Post'
-import {Switch,Route,Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
-import Category from "../Category/Category";
+
+import SwitchDiv from "./SwitchDiv";
 
 
 const Homepage = (props) => {
@@ -21,7 +21,7 @@ const Homepage = (props) => {
             <div>
               <ul>
               {props.category.map((cat,index)=>
-            <Link to={`cat/${index}`} key={index} className={classes.link}>
+            <Link to={`/${index}`} key={index} className={classes.link}>
              <li key={index}>
               {cat}
             </li>
@@ -36,10 +36,7 @@ const Homepage = (props) => {
             </div>
             </Col>
             <Col md={9} className={classes.Main_Content}>
-              <Switch>
-                <Route exact path='/'component={Post} />
-                <Route path='cat/:index' component={Category} />
-              </Switch>
+              <SwitchDiv/>
           
             </Col>
       </Row>
