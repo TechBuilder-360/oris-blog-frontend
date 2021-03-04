@@ -3,14 +3,13 @@ import Circle from "../Circle/Circle";
 import classes from "./Post.module.css";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { connect } from "react-redux";
 
 const Post = (props) => {
   return (
     <div className={classes.sidebar}>
       <h5 style={{ marginLeft: "30px" }}>Recent Posts</h5>
-
-      {props.post.map((post, index) => (
+{ props.post.length <1 ? 'No Match Found':
+      props.post.map((post, index) => (
         <Link to={`post/${index}`} key={index} className={classes.link}>
           <div className={classes.post_body}>
             <div style={{ float: "left" }}>
@@ -25,7 +24,6 @@ const Post = (props) => {
           </div>
         </Link>
       ))}
-
       <div className={classes.button_component}>
         <Button variant="secondary">Previous</Button>
         <Button variant="secondary">Next</Button>
@@ -35,10 +33,6 @@ const Post = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    post: state.blog.post,
-  };
-};
 
-export default connect(mapStateToProps)(Post);
+
+export default Post;

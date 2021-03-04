@@ -1,15 +1,32 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React ,{useState} from "react";
+import { Container, Row,Form, Col } from "react-bootstrap";
 import HomeNavBar from "./components/Navigation/main-navigation";
 import Wrapper from "./container/Container";
 import Homepage from "./components/Homepage/Homepage";
 import CreatePostPage from "./components/CreatePostPage/CreatePostPage";
-import SearchBox from "./components/SearchBox/SearchBox";
 import { Route, Switch } from "react-router-dom";
+import classes from './App.module.css'
 import Error404 from "./components/Special Page/Error404";
 import SinglePostView from "./components/SinglePostView/SinglePostView";
+import SearchDisplay from './components/SearchDisplay/SearchDisplay'
+import {connect} from 'react-redux'
 
-function App() {
+
+
+function App(props) {
+const [searchable, setSearchable]=useState(false)
+const [searchresult, setSearchresult]=useState([])
+const [value, setValue]=useState('')
+
+function triggerSearch(e){
+
+setSearchable(true)
+setValue(e)
+var data =props.post.filter(post=>post.header.toLowerCase().includes(value.toLowerCase()))
+setSearchresult(data);
+
+}
+
   const routes = (
     <Switch style={{ paddingLeft: "0" }}>
      
@@ -27,16 +44,37 @@ function App() {
           <HomeNavBar />
         </Col>
         <Col md={12}>
-        <div className="pull-right">
-          <SearchBox />
-        </div>
+       
+       <Row>
+      <Col md={9}></Col><Col md={3}>
+      <Form >
+      <Form.Control type='text' className={classes.search} value={value} placeholder="search" onChange={
+        (event)=>triggerSearch(event.target.value)}  
+        onBlur={()=>
+        {setSearchable(false)
+        setValue('')
+        }
+        }/>
+</Form>
+
+      </Col>
+</Row>
+        
       </Col >
       <Col md={12}>
+      {searchable? <SearchDisplay results={searchresult}/>:
         <Wrapper>{routes}</Wrapper>
+}
       </Col>
       </Row>
     </Container>
   );
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {
+    post: state.blog.post
+  };
+};
+
+export default connect(mapStateToProps)(App);
