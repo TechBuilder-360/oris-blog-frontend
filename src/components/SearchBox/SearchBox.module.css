@@ -1,0 +1,26 @@
+.textBox{
+max-width: 100%;
+  margin:10% 0%;
+  height:0%;
+  color:white;
+  border-bottom: 1px solid rgb(155, 154, 154);
+  font-size: 15pt;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.textBox input {
+  background-color:  rgb(204, 204, 204) ;
+
+}
+.input-group-text{
+  background: rgb(172, 172, 172) !important;
+}
+
+.textBox input:focus{
+  background-color:rgb(211, 210, 210) ;
+  color:white;
+
+  border-bottom: 1px solid rgb(189, 188, 188);
+}
+

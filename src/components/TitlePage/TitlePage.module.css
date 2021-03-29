@@ -1,0 +1,9 @@
+
+ul li{
+  list-style: none;
+  color: rgb(105, 105, 105);
+}
+
+ul{
+  margin-left: 10%;
+}

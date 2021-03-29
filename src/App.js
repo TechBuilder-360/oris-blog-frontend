@@ -8,24 +8,13 @@ import { Route, Switch } from "react-router-dom";
 import classes from './App.module.css'
 import Error404 from "./components/Special Page/Error404";
 import SinglePostView from "./components/SinglePostView/SinglePostView";
-import SearchDisplay from './components/SearchDisplay/SearchDisplay'
-import {connect} from 'react-redux'
 
 
 
-function App(props) {
-const [searchable, setSearchable]=useState(false)
-const [searchresult, setSearchresult]=useState([])
-const [value, setValue]=useState('')
 
-function triggerSearch(e){
+function App() {
 
-setSearchable(true)
-setValue(e)
-var data =props.post.filter(post=>post.header.toLowerCase().includes(value.toLowerCase()))
-setSearchresult(data);
 
-}
 
   const routes = (
     <Switch style={{ paddingLeft: "0" }}>
@@ -44,37 +33,13 @@ setSearchresult(data);
           <HomeNavBar />
         </Col>
         <Col md={12}>
-       
-       <Row>
-      <Col md={9}></Col><Col md={3}>
-      <Form >
-      <Form.Control type='text' className={classes.search} value={value} placeholder="search" onChange={
-        (event)=>triggerSearch(event.target.value)}  
-        onBlur={()=>
-        {setSearchable(false)
-        setValue('')
-        }
-        }/>
-</Form>
-
-      </Col>
-</Row>
-        
-      </Col >
-      <Col md={12}>
-      {searchable? <SearchDisplay results={searchresult}/>:
         <Wrapper>{routes}</Wrapper>
-}
-      </Col>
+      </Col >
       </Row>
     </Container>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    post: state.blog.post
-  };
-};
 
-export default connect(mapStateToProps)(App);
+
+export default App;

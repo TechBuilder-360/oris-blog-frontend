@@ -8,29 +8,47 @@ import { useDispatch } from "react-redux";
 import { faPlus,faCamera } from "@fortawesome/free-solid-svg-icons";
 import {connect} from 'react-redux'
 import classes from './CreatePostPage.module.css'
+import { CloudinaryUnsigned } from 'puff-puff/CKEditor';
+//import CodeBlock from '@ckeditor/ckeditor5-code-block/src/code-block';
+
+
 const CreatePostPage=(props)=>{
 let post={
       
       header:'',
       body:'',
-      image:'',
       tags:[],
 
 }
+function imagePluginFactory(editor){
+      editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
+        return new CloudinaryUnsigned( loader, 'footepl', 'spiy0dwb', [ 160, 500, 1000, 1052 ]);
+      }
+    }
+
+    
+
 const dispatch=useDispatch()
 const [tags, setTags] = useState([])
 const [val,setVal]= useState('')
-const [image,setImage]=useState('')
-const [imaget,setImaget]=useState([])
 const [title,setTitle]=useState('')
 const [body,setBody]=useState('')
+
+
+const onChange = (event, editor) => {
+      const data = editor.getData();
+      setBody(data);
+    };
+  
+    React.useEffect(() => {});
+  
+  
 
 
 function submit(){
      post={
             header:title,
             body:body,
-            image:image,
             tags:tags,
       }
       console.log(post)
@@ -41,8 +59,6 @@ function clearBox(){
 setTags([])
 setTitle('')
 setBody('')
-setImage('')
-setImaget([])
 setVal('')
 
 }
@@ -88,37 +104,23 @@ onChange={(e)=>setTitle(e.target.value)}
 </Col>
          </Row>  
          </Form.Group>
-         <Form.Group>
-               <Col md={12} >
-                     <Form.Label>Cover Image</Form.Label>
-                           <div className={classes.div}>
-                                 {image==''?'':
-                  <Image src={image} rounded fluid />                                  }
-                           <Form.Label className={classes.upload_btn}>
-                           <Form.Control type="file" value='' 
-                           onChange={(e)=>{
-                  setImage(URL.createObjectURL(e.target.files[0]))
-                  setImaget(e.target.files[0])
-                           }
-                        }/>
-                           <FontAwesomeIcon icon={faCamera}/>
-                           </Form.Label>
-                                  </div>                                            
-                                      </Col>
-                                      </Form.Group>
+        
                                       <Form.Group>
                                             <Col>
                                           <Form.Label>
                                             Articles
                                                 </Form.Label>
-                                                <CKEditor
-                    editor={ ClassicEditor }
+                        <CKEditor
+
+
+         editor={ ClassicEditor }
                     
-                    data=""
-                    onChange={ ( event, editor ) => {
-                        const data = editor.getData();
-                        setBody(data)
-                    } }
+                    
+                        
+                    
+                    onChange={onChange}
+                    data={body}
+                    onReady={(e) => console.log(e)}
                 />                             
                        </Col>
                        </Form.Group> 

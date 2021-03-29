@@ -1,6 +1,25 @@
 import * as actionType from "../actions/actionType";
 
 const initialState = {
+
+  author:[
+{
+  name:"folayan shola",
+  bio:"this is us in the town of people with no choice"
+},
+{
+  name:"folayan michael",
+bio:"this is us in the town of people with no choice"
+},
+
+{
+  name:"folayan james",
+bio:"this is us in the town of people with no choice"
+}
+
+
+
+  ],
   categories:[
     "Science",
     "Art",
@@ -11,41 +30,30 @@ const initialState = {
     "Music",
   ],
   post: [
-    {
+    {  author:"folayan sola",
       header: "post one",
       body: " this is the body",
-      image: '',
-      created_at: "2/2/2021",
+      time:"50 mins",
+      created_at: "10 mins ago",
       tags: ["laravel", "javascript"],
+
     },
 
     {
-     
+      author:"folayan sola",
       header: "post two",
       body: " this is the body",
-      image: [],
-      created_at: "2/2/2021",
+      time:"50 mins",
+      created_at: "Today ",
       tags: ["laravel", "javascript"],
-    },
+    }
 
-    {
-     
-      header: "post three",
-      body: " this is the body",
-      image: [],
-      created_at: "2/2/2021",
-      tags: ["laravel", "javascript"],
-    },
-    {
-     
-      header: "post four",
-      body: " this is the body",
-      image: [],
-
-      created_at: "2/2/2021",
-      tags: ["laravel", "javascript"],
-    },
+    
   ],
+
+  search:false,
+
+  data:[]
 };
 
 const reducer = (state = initialState, action) => {
@@ -55,6 +63,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         post: [...state.post, action.payload],
+      };
+      case actionType.ON_SEARCH:
+      return {
+        ...state,
+        search: action.payload,
       };
     default:
       return state;

@@ -1,49 +1,41 @@
 import React from "react";
-import { Col, Container, Row ,Button} from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import classes from "./Homepage.module.css";
-import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import SideDisplay from '../SideDisplay/SideDisplay'
+import TitlePage from "../TitlePage/TitlePage";
+import Section from "../Section/Section";
 
-import SwitchDiv from "./SwitchDiv";
 
 
 const Homepage = (props) => {
   
+
+
+
   
   return (
-    <Container>   
+    <Container fluid>   
      
-     <Row className={classes.Main}>
-            <Col md={3} className={classes.subMain}>
-            <div className={classes.sidebar}>
-            <h5>Topics</h5>
-           
-            <div>
-              <ul>
-              {props.category.map((cat,index)=>
-            <Link to={`/${index}`} key={index} className={classes.link}>
-             <li key={index}>
-              {cat}
-            </li>
-            
-            </Link>
-           
-            
-               ) }
-              </ul>
-  
-            </div>
-            </div>
-            </Col>
-            <Col md={9} className={classes.Main_Content}>
-              <SwitchDiv/>
-          
-            </Col>
+     <Row >
+     
+      <Col md={7}>  
+      <Row>
+      <Col md={1}></Col>  <Section />
+      
+      <Col md={2}></Col>
+    
+
       </Row>
-     
-     
-          
-        
+   
+       </Col>
+      
+      <Col md={5} className={classes.side}>
+<SideDisplay/>
+<TitlePage/>
+      </Col>
+
+      </Row>
     </Container>
   );
 };

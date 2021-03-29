@@ -9,6 +9,12 @@ export const add_post = (content) => {
   };
 };
 
+export const on_search = (content) => {
+  return {
+    type: actionType.ON_SEARCH,
+    payload: content,
+  };
+};
 
 
 
