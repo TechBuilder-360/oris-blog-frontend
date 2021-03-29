@@ -85,7 +85,12 @@ function deleteTag(i){
 
 
       return(
-<div>         
+            <Row>
+<Col md={2}>
+                            </Col> 
+
+      
+         <Col md={8}>
 <Form className={classes.form}>
 <Form.Group>
 <Row>
@@ -163,8 +168,11 @@ onChange={(e)=>setTitle(e.target.value)}
                                         <Button variant="default">Draft</Button>
 
                                   </Form.Group>
-                            </Form>             
-            </div>
+                            </Form>    
+                            </Col>
+                            <Col md={2}>
+                            </Col>         
+            </Row>
       )
 
 
