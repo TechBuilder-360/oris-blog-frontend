@@ -1,5 +1,8 @@
 
 
+
+
+
  export const truncateText = (string, maxLength) => {
   if (!string) return null;
   if (string.length <= maxLength) return string;
@@ -8,13 +11,8 @@
 
 
 
-export const searchResult=(query)=>{
-  return query.map((data,index)=>
-<div>
-{data.header}
-</div>
-)
- }
+
+
 
  
  

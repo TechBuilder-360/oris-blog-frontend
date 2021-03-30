@@ -1,18 +1,25 @@
 import React,{useState} from 'react'
 import {Tooltip,Row,Col,Form,Button,Image} from 'react-bootstrap'
 import {add_post} from '../../store/actions/blogAction'
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
-import { faPlus,faCamera } from "@fortawesome/free-solid-svg-icons";
+import { faPlus} from "@fortawesome/free-solid-svg-icons";
 import {connect} from 'react-redux'
 import classes from './CreatePostPage.module.css'
-import { CloudinaryUnsigned } from 'puff-puff/CKEditor';
-//import CodeBlock from '@ckeditor/ckeditor5-code-block/src/code-block';
+import {Editor, EditorState,RichUtils,getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';
+import Icon from '../shared/Icon'
+import 'draft-js/dist/Draft.css';
+import { btn,blockTypeButtons,headers,PluginsBtn,BlockButton,TextButton,styleMap
+
+} from './Settings'
+
 
 
 const CreatePostPage=(props)=>{
+
+      const [editorState, setEditorState] = React.useState(
+    () => EditorState.createEmpty(),
+  );
+
 let post={
       
       header:'',
@@ -20,11 +27,7 @@ let post={
       tags:[],
 
 }
-function imagePluginFactory(editor){
-      editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
-        return new CloudinaryUnsigned( loader, 'footepl', 'spiy0dwb', [ 160, 500, 1000, 1052 ]);
-      }
-    }
+
 
     
 
@@ -35,13 +38,12 @@ const [title,setTitle]=useState('')
 const [body,setBody]=useState('')
 
 
-const onChange = (event, editor) => {
-      const data = editor.getData();
-      setBody(data);
-    };
-  
-    React.useEffect(() => {});
-  
+
+
+
+
+
+ 
   
 
 
@@ -63,6 +65,8 @@ setVal('')
 
 }
 
+
+
 function addClick(){
 const value=val.toUpperCase()
 if(tags.length > 1){
@@ -82,12 +86,70 @@ function deleteTag(i){
           }
 
 
+      const  handleKeyCommand=(command)=> {
+    if (!editorState && command === 'highlight') {
+  editorStat = RichUtils.toggleInlineStyle(editorState, 'HIGHLIGHT');
+}
+    const editorStat = RichUtils.handleKeyCommand(editorState, command);
+    if (editorStat) {
+      setEditorState(editorStat)
+      return 'handled';
+    }
+
+    return 'not-handled';
+  }   
+
+function toggleBlockType (event){
+    event.preventDefault();
+
+    let block = event.currentTarget.getAttribute('data-block');
+    
+      setEditorState(RichUtils.toggleBlockType(editorState, block)
+    )
+  }
+function toggleInlineStyle(event) {
+    event.preventDefault();
+    let style = event.currentTarget.getAttribute('data-style');
+    
+      setEditorState(
+RichUtils.toggleInlineStyle(editorState, style)
+
+      ) 
+  }
+
+
+const keyBindingFunction=(event)=> {
+  if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === 'x') {
+    return 'strikethrough';
+  }
+
+  if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === '7') {
+    return 'ordered-list';
+  }
+
+  if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === '8') {
+    return 'unordered-list';
+  }
+
+  if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === '9') {
+    return 'blockquote';
+  }
+if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === 'h') {
+  return 'highlight';
+}
+  return getDefaultKeyBinding(event);
+}
+
+
+
+ 
+ 
 
 
       return(
             <Row>
 <Col md={2}>
-                            </Col> 
+</Col> 
 
       
          <Col md={8}>
@@ -115,18 +177,33 @@ onChange={(e)=>setTitle(e.target.value)}
                                           <Form.Label>
                                             Articles
                                                 </Form.Label>
-                        <CKEditor
-
-
-         editor={ ClassicEditor }
-                    
-                    
-                        
-                    
-                    onChange={onChange}
-                    data={body}
-                    onReady={(e) => console.log(e)}
-                />                             
+                                                <div className={classes.toolbar}>
+                                               
+          {btn.map((button) => {
+            return PluginsBtn(button.value, button.style,button.icon,editorState,toggleInlineStyle);
+          })}
+                                                
+                                                </div>
+       <div className={classes.toolbar}>
+         
+          {headers.map((button) => {
+            return TextButton(button.value, button.block,RichUtils,toggleBlockType,editorState);
+          })}
+        </div>
+      <div className={classes.toolbar}>
+         
+          {blockTypeButtons.map((button) => {
+            return BlockButton(button.value, button.block,button.icon,RichUtils,toggleBlockType,editorState);
+          })}
+        </div>
+                      <div className={classes.editor}>
+                        <Editor 
+                        customStyleMap={styleMap}
+                        placeholder={"Start typing!"}
+                        editorState={editorState} 
+                        handleKeyCommand={handleKeyCommand}
+                        onChange={setEditorState} />
+                                   </div>     
                        </Col>
                        </Form.Group> 
                        <Form.Group>
@@ -158,7 +235,7 @@ onChange={(e)=>setTitle(e.target.value)}
                             )}
 </ul></Col>
                              <Col>
-        <Button variant="secondary" onClick={addClick}><FontAwesomeIcon icon={faPlus} />Add</Button>
+        <Button variant="secondary" onClick={addClick}><Icon size="1x" icon={faPlus} />Add</Button>
                              </Col>
                              </Row> 
                              </Form.Group>

@@ -9,6 +9,10 @@
       
 }
 
+.editor{
+      border: 1px solid #ccc;
+}
+
 .input{
       border-bottom:1px solid rgb(161, 160, 160);
       background-color: rgb(235, 234, 234);
@@ -62,31 +66,27 @@
 
 
 }
-input[type="file"]{
-      display: none;
+
+.toolbar button[type="button"] {
+  border: 1px solid #eee;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 1%;
+  padding:8px;
+  }
+
+.toolbar button[type="button"]:active {
+  transform: scale(.95);
 }
-.upload_btn{
-      padding: 6px 12px;
-      border-width:0px;
-      position:absolute;
-      cursor: pointer;
-      background-color:  rgb(177, 175, 175);
-      color:rgb(53, 52, 52);
-      border-radius: 5px;
-     
-      
-      
+
+.toolbar button[type="button"]:not(.active):hover {
+  background-color: #eee;
 }
-.upload_btn:hover{
-      background-color:  rgb(104, 102, 102);
-      color:white;
-      font-weight: bold;
-}
-.textarea{
-      border-width: 0px;
-      background-color: rgb(235, 234, 234);
-      border-radius: 10px;
-}
+
+
+
+
 .button_group button{
 
       margin-left: 10px;

@@ -1,6 +1,6 @@
 
 import { faBook, faImage, faPencilAlt, faSave, faStopwatch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Icon  from "../shared/Icon";
 import React from 'react';
 import {Col,Row} from 'react-bootstrap'
 import classes from './BlogContainer.module.css'
@@ -20,7 +20,7 @@ import classes from './BlogContainer.module.css'
 
 <Col>
    <div className={classes.header}>
-   <div><FontAwesomeIcon className={classes.icon} size="2x" icon={faImage}/>
+   <div><Icon className={classes.icon} size="2x" icon={faImage}/>
       <span>{blog.author}</span></div>
      </div> 
     
@@ -30,26 +30,20 @@ import classes from './BlogContainer.module.css'
     
    <div><i>created on {blog.created_at}</i> </div>
     
-    <div><FontAwesomeIcon className={classes.icon} size="1x" icon={faStopwatch}/> 
+    <div><Icon className={classes.icon} size="1x" icon={faStopwatch}/> 
     <span>{blog.time}</span></div></div>
       
 
    
    
     <div className={classes.left}>
-<div><FontAwesomeIcon className={classes.icon} size="1x" icon={faBook}/>
+<div><Icon className={classes.icon} size="1x" icon={faBook}/>
     <span>Follow</span>
  </div>
- <div><FontAwesomeIcon className={classes.icon} size="1x" icon={faSave}/>
-  
+ <div><Icon className={classes.icon} size="1x" icon={faSave}/>
   <span>Save</span></div>
-  
-    <div><FontAwesomeIcon className={classes.icon} size="1x" icon={faPencilAlt}/>
-  
+    <div><Icon className={classes.icon} size="1x" icon={faPencilAlt}/>
   <span>Comment</span></div>
-  
-  
-
     </div>
   
 

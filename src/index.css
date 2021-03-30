@@ -18,3 +18,9 @@ code {
 .ck-editor__editable_inline{
   min-height:220px;
 }
+
+.change {
+   background-color: rgb(192, 190, 190) !important;
+  border-color: transparent !important;
+  
+}

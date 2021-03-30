@@ -6,7 +6,7 @@ import Select from 'react-select'
 import { Link, NavLink } from "react-router-dom";
 import Container from "../../container/Container";
 import { Button,Form,Dropdown } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Icon  from "../shared/Icon";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 
 const HomeNavBar = (props) => {
@@ -31,7 +31,7 @@ const HomeNavBar = (props) => {
   )}
   </Dropdown.Menu>
 </Dropdown>
-<NavLink to={"#"}><FontAwesomeIcon icon={faLock}/> Log Out</NavLink>
+<NavLink to={"#"}><Icon icon={faLock}/> Log Out</NavLink>
         </div>
       </nav>
     </div>
