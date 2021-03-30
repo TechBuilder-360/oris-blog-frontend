@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "cra-template": "1.1.2",
+    "draft-js": "^0.11.7",
     "jquery": "^3.5.1",
     "moment": "^2.29.1",
     "popper": "^1.0.1",

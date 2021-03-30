@@ -11,7 +11,10 @@ import classes from './BlogContainer.module.css'
  
   return (
     <Col md={12}>
-      {props.post.map((blog,index)=>
+      {
+      
+      props.post.length > 0 ?
+      props.post.map((blog,index)=>
       
       <Row className={classes.main}>
 
@@ -57,7 +60,14 @@ import classes from './BlogContainer.module.css'
      </Row>
       
       
-      )}
+      ):
+
+      <h4 style={{textAlign:'center'}}> No Result</h4>
+      
+      
+      
+      
+      }
     </Col>
   );
 }

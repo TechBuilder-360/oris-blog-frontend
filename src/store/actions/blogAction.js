@@ -16,5 +16,12 @@ export const on_search = (content) => {
   };
 };
 
+export const search_result = (content) => {
+  return {
+    type: actionType.SEARCH_RESULT,
+    payload: content,
+  };
+};
+
 
 

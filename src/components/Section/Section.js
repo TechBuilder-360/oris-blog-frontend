@@ -14,8 +14,7 @@ return(
 <Row className={classes.main} >
 <SearchBox />
 
-
-<BlogContainer post={props.post} />
+<BlogContainer post={ props.search? props.data :props.post} />
 
 </Row>
 
@@ -29,6 +28,8 @@ return(
 
 const mapStateToProps = (state) => {
   return {
+    search:state.blog.search,
+    data:state.blog.data,
     post: state.blog.post,
    
   };

@@ -5,33 +5,28 @@ import { Form,Col, InputGroup } from 'react-bootstrap';
 import classes from './SearchBox.module.css'
 import {connect} from 'react-redux'
 import { useDispatch} from "react-redux";
+import { on_search,search_result } from '../../store/actions/blogAction';
 
 const SearchBox=(props)=> {
   const dispatch=useDispatch()
-
-  const [options, setOptions] = useState([]);
-  const [result,setResult]=useState([])
   const [value,setValue]=useState('')
 
   function triggerSearch(e){
-    console.log(e);
-  setValue(e)
+    setValue(e)
+    if(e.length>0){
+
+dispatch(on_search(true))
   var data =props.post.filter(post=>post.header.toLowerCase().includes(value.toLowerCase()))
-  setResult(data);
-  console.log(data);
+  dispatch(search_result(data))
+    }else{
+dispatch(on_search(false))
+
+    }
+    
   }
-  const searchResult=(query)=>{
-    return query.map((data,index)=>
-  <div>
-  {data.header}
-  </div>
-  )
-   }
-
-   const handleSearch = () => {
-    setOptions(value != '' ? searchResult(result) : []);
-  };
-
+  
+  
+   
 
   return (
     <Col md={12} style={{ padding:'0%' }}>
@@ -40,7 +35,7 @@ const SearchBox=(props)=> {
 <InputGroup.Prepend>
  <InputGroup.Text> <FontAwesomeIcon icon={faSearch}/> </InputGroup.Text>
 </InputGroup.Prepend>
-<Form.Control size="lg" value={value} type="text" placeholder="search for article" onChange={(event)=>triggerSearch(event.target.value)} />
+<Form.Control size="lg" value={value} type="text" placeholder="search for article"  onChange={(event)=>triggerSearch(event.target.value)} />
         </InputGroup>
     
       </Form>
