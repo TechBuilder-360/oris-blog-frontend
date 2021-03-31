@@ -26,7 +26,7 @@ const HomeNavBar = (props) => {
 
   <Dropdown.Menu>
   {props.category.map((cat,index)=>
-    <Dropdown.Item><NavLink to={`/${index}`}>{cat}</NavLink>
+    <Dropdown.Item key={index}><NavLink to={`/${index}`}>{cat}</NavLink>
     <Dropdown.Divider /></Dropdown.Item>
   )}
   </Dropdown.Menu>

@@ -12,11 +12,11 @@
 
 
 .input{
-      border-bottom:1px solid rgb(161, 160, 160);
+      border-width:0px;
       background-color: rgb(235, 234, 234);
      
 }
-.input:hover,.input:focus{
+.input:hover{
       border-width:0px;
       background-color: rgb(235, 234, 234);
      
@@ -63,32 +63,28 @@
       padding: 0%;
 }
 
-.editor{
-      border: 1px solid #ccc;
-      padding:20px;
-      border-radius: 5px;
-      min-height:120px;
-}
-.btnGroup{
-      display: inline-block !important;
-      width: 100%;
-      border: 1px solid rgb(253, 247, 247);
-      padding:2% 0% 0%;
+input[name="title"]{
+    min-height: 70px;
+    border: 0px;
+    caret-color: rgb(137, 138, 137);
+    text-indent: 0px;
+    transition: text-indent 0.3s ease;
+    
 }
 
-.toolbar button[type="button"] {
-  border: 1px solid rgb(223, 221, 221);
-  background-color: #fff;
-  border-radius:5px;
-  cursor: pointer;
-  margin:2px;
-  padding:8px;
-  color:rgb(109, 107, 107);
-  }
 
-.toolbar button[type="button"]:not(.change):hover {
-  background-color: #eee;
-  transform: rotate(280deg);
+input[name="title"]:focus{
+      text-indent:10px; 
+      transition: text-indent 0.3s ease;}
+
+input[name="title"]::-webkit-input-placeholder{
+
+      font-size: 38pt;
+      font-family: 'Times New Roman', Times, serif;
+      color:rgb(206, 204, 204) !important;
+      font-weight: 500;
+      font-style: italic;
+      
 }
 
 .button_group button{
@@ -113,3 +109,8 @@
         
       
   }
+
+
+ 
+    
+    

@@ -23,5 +23,12 @@ export const search_result = (content) => {
   };
 };
 
+export const add_text = (content) => {
+  return {
+    type: actionType.EDITOR_TEXT,
+    payload: content,
+  };
+};
+
 
 

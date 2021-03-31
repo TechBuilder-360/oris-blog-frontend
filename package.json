@@ -19,6 +19,7 @@
     "cra-template": "1.1.2",
     "draft-js": "^0.11.7",
     "jquery": "^3.5.1",
+    "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.29.1",
     "popper": "^1.0.1",
     "react": "^17.0.1",

@@ -53,7 +53,8 @@ bio:"this is us in the town of people with no choice"
 
   search:false,
 
-  data:[]
+  data:[],
+  editor:""
 };
 
 const reducer = (state = initialState, action) => {
@@ -75,6 +76,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         data: action.payload,
+      };
+      case actionType.EDITOR_TEXT:
+      return {
+        ...state,
+        editor: action.payload,
       };
     default:
       return state;

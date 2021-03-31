@@ -1,7 +1,7 @@
 import { faPlus,faCode,faBold,faItalic,faStrikethrough,faUnderline,faListOl,faListUl,faWindowMinimize,faQuoteLeft
 
  } from "@fortawesome/free-solid-svg-icons";
-import Icon from '../shared/Icon'
+import Icon from './Icon'
 import {RichUtils,getDefaultKeyBinding, KeyBindingUtil } from 'draft-js';
 
 
