@@ -78,3 +78,10 @@
     text-transform: capitalize;
   }
 }
+
+
+
+.link:hover{
+  text-decoration: none;
+
+}

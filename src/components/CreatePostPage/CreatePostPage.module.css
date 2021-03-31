@@ -9,19 +9,17 @@
       
 }
 
-.editor{
-      border: 1px solid #ccc;
-}
+
 
 .input{
       border-bottom:1px solid rgb(161, 160, 160);
       background-color: rgb(235, 234, 234);
-      
+     
 }
 .input:hover,.input:focus{
       border-width:0px;
       background-color: rgb(235, 234, 234);
-
+     
 }
 .tag li{
       display: inline-block;
@@ -63,29 +61,35 @@
       width: 100%;
       margin: 0px 0px;
       padding: 0%;
+}
 
-
+.editor{
+      border: 1px solid #ccc;
+      padding:20px;
+      border-radius: 5px;
+      min-height:120px;
+}
+.btnGroup{
+      display: inline-block !important;
+      width: 100%;
+      border: 1px solid rgb(253, 247, 247);
+      padding:2% 0% 0%;
 }
 
 .toolbar button[type="button"] {
-  border: 1px solid #eee;
+  border: 1px solid rgb(223, 221, 221);
   background-color: #fff;
-  border-radius: 5px;
+  border-radius:5px;
   cursor: pointer;
-  margin: 1%;
+  margin:2px;
   padding:8px;
+  color:rgb(109, 107, 107);
   }
 
-.toolbar button[type="button"]:active {
-  transform: scale(.95);
-}
-
-.toolbar button[type="button"]:not(.active):hover {
+.toolbar button[type="button"]:not(.change):hover {
   background-color: #eee;
+  transform: rotate(280deg);
 }
-
-
-
 
 .button_group button{
 

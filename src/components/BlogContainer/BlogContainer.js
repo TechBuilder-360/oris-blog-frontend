@@ -4,6 +4,7 @@ import Icon  from "../shared/Icon";
 import React from 'react';
 import {Col,Row} from 'react-bootstrap'
 import classes from './BlogContainer.module.css'
+import { Link } from 'react-router-dom';
 
 
   const BlogContainer=(props) =>{
@@ -16,23 +17,32 @@ import classes from './BlogContainer.module.css'
       props.post.length > 0 ?
       props.post.map((blog,index)=>
       
-      <Row className={classes.main}>
+      <Row className={classes.main} key={index}>
 
 <Col>
    <div className={classes.header}>
    <div><Icon className={classes.icon} size="2x" icon={faImage}/>
       <span>{blog.author}</span></div>
      </div> 
-    
-  <div className={classes.left}><div><h4>{blog.header}</h4></div></div>
+    <Link to={`post/${index}`}  className={classes.link}>
+    <div className={classes.left}>
+      <div>
+        <h4>{blog.header}</h4>
+        </div>
+        </div>
   
   <div className={classes.timer}>
     
    <div><i>created on {blog.created_at}</i> </div>
+  
     
-    <div><Icon className={classes.icon} size="1x" icon={faStopwatch}/> 
-    <span>{blog.time}</span></div></div>
-      
+  
+    <div>
+      <Icon className={classes.icon} size="1x" icon={faStopwatch}/> 
+    <span>{blog.time}</span>
+    </div>
+    </div>
+    </Link>
 
    
    

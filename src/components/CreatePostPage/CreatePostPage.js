@@ -150,23 +150,15 @@ if (KeyBindingUtil.hasCommandModifier(event) && event.shiftKey && event.key === 
             <Row>
 <Col md={2}>
 </Col> 
-
-      
          <Col md={8}>
 <Form className={classes.form}>
 <Form.Group>
 <Row>
-
 <Col md={6} sm={12} xs={12}>
-
 <Form.Label>Title</Form.Label>
 <Form.Control type="text" value={title} name="title" className={classes.input}
-onChange={(e)=>setTitle(e.target.value)}
-
-/>
-
+onChange={(e)=>setTitle(e.target.value)} />
 </Col>
-
 <Col>
 </Col>
          </Row>  
@@ -177,24 +169,25 @@ onChange={(e)=>setTitle(e.target.value)}
                                           <Form.Label>
                                             Articles
                                                 </Form.Label>
+                                                <br/>
+                                                <div className={classes.btnGroup}>
                                                 <div className={classes.toolbar}>
+                                                  
                                                
           {btn.map((button) => {
             return PluginsBtn(button.value, button.style,button.icon,editorState,toggleInlineStyle);
           })}
-                                                
-                                                </div>
-       <div className={classes.toolbar}>
-         
+              
+       
           {headers.map((button) => {
-            return TextButton(button.value, button.block,RichUtils,toggleBlockType,editorState);
+            return TextButton(button.value, button.block,RichUtils,toggleBlockType,editorState)
           })}
-        </div>
-      <div className={classes.toolbar}>
-         
+        
+     
           {blockTypeButtons.map((button) => {
             return BlockButton(button.value, button.block,button.icon,RichUtils,toggleBlockType,editorState);
           })}
+        </div>
         </div>
                       <div className={classes.editor}>
                         <Editor 
@@ -218,14 +211,11 @@ onChange={(e)=>setTitle(e.target.value)}
       <Form.Control as="select" className={classes.input} 
  onChange={(e)=>
        setVal(e.target.value)
-      
  } >
       <option disabled>SELECT</option>
       {props.category.map((cat,index)=>
-      
       <option key={index} value={cat}>{cat}</option>
       )}
-
 </Form.Control>
 <ul className={classes.tag}>
 {tags.map((tag,index)=>
@@ -243,7 +233,6 @@ onChange={(e)=>setTitle(e.target.value)}
                                         <Button variant="secondary" onClick={submit}>Post</Button>
                                         <Button variant="secondary" onClick={clearBox}>Clear</Button>
                                         <Button variant="default">Draft</Button>
-
                                   </Form.Group>
                             </Form>    
                             </Col>
