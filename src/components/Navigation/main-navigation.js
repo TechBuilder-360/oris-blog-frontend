@@ -1,12 +1,10 @@
 import React from "react";
 import classes from "./main-navigation.module.css";
 import logo from "../../images/logo.png";
-import {connect} from 'react-redux'
-import Select from 'react-select'
+import { connect } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import Container from "../../container/Container";
-import { Button,Form,Dropdown } from "react-bootstrap";
-import Icon  from "../shared/Icon";
+import { Dropdown } from "react-bootstrap";
+import Icon from "../shared/Icon";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 
 const HomeNavBar = (props) => {
@@ -20,18 +18,20 @@ const HomeNavBar = (props) => {
           <NavLink to={"/"}>Home</NavLink>
           <NavLink to={"/create"}>Create Blog</NavLink>
           <Dropdown id="basic">
-  <Dropdown.Toggle variant="secondary" >
-    Navigation
-  </Dropdown.Toggle>
+            <Dropdown.Toggle variant="secondary">Navigation</Dropdown.Toggle>
 
-  <Dropdown.Menu>
-  {props.category.map((cat,index)=>
-    <Dropdown.Item key={index}><NavLink to={`/${index}`}>{cat}</NavLink>
-    <Dropdown.Divider /></Dropdown.Item>
-  )}
-  </Dropdown.Menu>
-</Dropdown>
-<NavLink to={"#"}><Icon icon={faLock}/> Log Out</NavLink>
+            <Dropdown.Menu>
+              {props.category.map((cat, index) => (
+                <Dropdown.Item key={index}>
+                  <NavLink to={`/${index}`}>{cat}</NavLink>
+                  <Dropdown.Divider />
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+          <NavLink to={"#"}>
+            <Icon icon={faLock} /> Log Out
+          </NavLink>
         </div>
       </nav>
     </div>
@@ -40,8 +40,7 @@ const HomeNavBar = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    
-    category:state.blog.categories
+    category: state.blog.categories,
   };
 };
 

@@ -1,120 +1,97 @@
-
-
-
-.form{
-   box-shadow: 0px 0px 20px rgb(104, 102, 102,0.4);
-      margin:50px;
-      padding:50px;
-      width:auto;
-      
+.form {
+  box-shadow: 0px 0px 20px rgb(104, 102, 102, 0.4);
+  margin: 50px;
+  padding: 50px;
+  width: auto;
 }
 
-
-
-.input{
-      border-width:0px;
-      background-color: rgb(235, 234, 234);
-     
+.input {
+  border-width: 0px;
+  background-color: rgb(235, 234, 234);
 }
-.input:hover{
-      border-width:0px;
-      background-color: rgb(235, 234, 234);
-     
+.input:hover {
+  border-width: 0px;
+  background-color: rgb(235, 234, 234);
 }
-.tag li{
-      display: inline-block;
-      font-size: 7pt;
-      padding:4px;
-      margin: 6px;
-      color:rgb(71, 71, 71);
-      background-color: rgb(177, 177, 177);
-      border-radius: 3px;
-      border-width: 0px;
+.tag li {
+  display: inline-block;
+  font-size: 7pt;
+  padding: 4px;
+  margin: 6px;
+  color: rgb(71, 71, 71);
+  background-color: rgb(177, 177, 177);
+  border-radius: 3px;
+  border-width: 0px;
 }
-.tag li:hover{
-      background-color: rgb(190, 188, 188);
-      cursor: pointer;
-
+.tag li:hover {
+  background-color: rgb(190, 188, 188);
+  cursor: pointer;
 }
-.tag{
-      width:100%;
-      list-style:none;
-      
+.tag {
+  width: 100%;
+  list-style: none;
 }
-.max{
-      font-size: smaller;
-      color:rgb(192, 191, 191);
-      font-style: italic;
+.max {
+  font-size: smaller;
+  color: rgb(192, 191, 191);
+  font-style: italic;
 }
-.div{
-      background-color: rgb(236, 232, 232);
-      width: 140px;
-      height: 100px;
-      border-radius:5px;
-      margin-left: 2%;
-      border-right: 1px solid rgb(145, 144, 144);
-      border-bottom:1px solid rgb(145, 144, 144) ;
+.div {
+  background-color: rgb(236, 232, 232);
+  width: 140px;
+  height: 100px;
+  border-radius: 5px;
+  margin-left: 2%;
+  border-right: 1px solid rgb(145, 144, 144);
+  border-bottom: 1px solid rgb(145, 144, 144);
 }
 
-.div img{
-      height: 100%;
-      width: 100%;
-      margin: 0px 0px;
-      padding: 0%;
+.div img {
+  height: 100%;
+  width: 100%;
+  margin: 0px 0px;
+  padding: 0%;
 }
 
-input[name="title"]{
-    min-height: 70px;
-    border: 0px;
-    font-style: italic;
-    font-size: 30pt;
-    caret-color: rgb(137, 138, 137);
-    text-indent: 0px;
-    transition: text-indent 0.3s ease;
-    
-    outline:none !important;
+input[name="title"] {
+  min-height: 70px;
+  border: 0px;
+  font-style: italic;
+  font-size: 30pt;
+  caret-color: rgb(137, 138, 137);
+  text-indent: 0px;
+  transition: text-indent 0.3s ease;
+
+  outline: none !important;
 }
 
-
-.title:focus{
-      text-indent:10px; 
-      outline:none !important;
-      transition: text-indent 0.3s ease;}
-
-input[name="title"]::-webkit-input-placeholder{
-
-      font-size: 38pt;
-      font-family: 'Times New Roman', Times, serif;
-      color:rgb(206, 204, 204) !important;
-      font-weight: 500;
-      font-style: italic;
-      
+.title:focus {
+  text-indent: 10px;
+  outline: none !important;
+  transition: text-indent 0.3s ease;
 }
 
-.button_group button{
-
-      margin-left: 10px;
-      
+input[name="title"]::-webkit-input-placeholder {
+  font-size: 38pt;
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(206, 204, 204) !important;
+  font-weight: 500;
+  font-style: italic;
 }
-.button_group{
-      margin-top:50px;
+
+.button_group button {
+  margin-left: 10px;
+}
+.button_group {
+  margin-top: 50px;
 }
 
-@media (max-width: 900px){
-      .form{
-            box-shadow: 0px 0px 20px rgb(104, 102, 102,0.6);
+@media (max-width: 900px) {
+  .form {
+    box-shadow: 0px 0px 20px rgb(104, 102, 102, 0.6);
 
-               margin:17% 0% 17% 0%;
-               padding:5%;
-               width:100%;
-      
-         }
-         
-        
-      
+    margin: 17% 0% 17% 0%;
+    padding: 5%;
+    width: 100%;
   }
-
-
- 
-    
-    
+}

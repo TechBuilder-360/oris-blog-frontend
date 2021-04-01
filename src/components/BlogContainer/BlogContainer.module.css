@@ -1,87 +1,79 @@
-.main{
-
+.main {
   margin-bottom: 3%;
-  padding:0% !important;
-  
+  padding: 0% !important;
 }
 
-.right{
-  
+.right {
   background-color: rgb(194, 194, 193);
   height: auto;
   border-radius: 3px;
-  
 }
 
-
-.left,.timer,.header{
-  display:flex;
+.left,
+.timer,
+.header {
+  display: flex;
   flex-direction: row;
   color: rgb(151, 150, 150) !important;
   margin-left: 0%;
 }
 
-.left div{
+.left div {
   padding: 1%;
   font-size: 9pt;
   text-transform: capitalize;
 }
 
-.timer div{
+.timer div {
   padding: 2%;
   font-size: 7pt;
   text-transform: capitalize;
 }
-.header div{
+.header div {
   padding: 1%;
   font-size: 9pt;
   font-weight: bold;
   text-transform: capitalize;
 }
 
-.left span,.header span,.timer span{
+.left span,
+.header span,
+.timer span {
   margin-left: 6px;
-  
 }
 
-
-@media (max-width: 500px){
-      
-  .left div{
+@media (max-width: 500px) {
+  .left div {
     padding: 1%;
     font-size: 9pt;
     text-transform: capitalize;
   }
-  
-  .timer div{
+
+  .timer div {
     padding: 1%;
     font-size: 7pt;
     text-transform: capitalize;
   }
-  ::-webkit-scrollbar{
-  width: 0px;
-      background: transparent;
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
   }
 }
 
-@media (max-width: 379px){
-      
-  .left div{
+@media (max-width: 379px) {
+  .left div {
     padding: 1%;
     font-size: 9pt;
     text-transform: capitalize;
   }
-  
-  .timer div{
+
+  .timer div {
     padding: 1%;
     font-size: 7pt;
     text-transform: capitalize;
   }
 }
 
-
-
-.link:hover{
+.link:hover {
   text-decoration: none;
-
 }

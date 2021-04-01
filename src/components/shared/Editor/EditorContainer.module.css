@@ -1,51 +1,40 @@
-
-.progress{
+.progress {
   height: 2px !important;
 }
-.WrapperEditor{
-  margin-top:7%;
- 
-
+.WrapperEditor {
+  margin-top: 7%;
 }
-.editor{
-  
-  border: 0px ;
-      
-  height:200px;
-  
+.editor {
+  border: 0px;
+
+  height: 200px;
 }
 
-.btnGroup{
+.btnGroup {
   display: inline-block !important;
   width: 100%;
   border: 1px solid rgb(253, 247, 247);
-  padding:2% 0% 0%;
+  padding: 2% 0% 0%;
 }
 
 .toolbar button[type="button"] {
-border: 1px solid rgb(223, 221, 221);
-background-color: #fff;
-border-radius:5px;
-cursor: pointer;
-margin:2px;
-padding:8px;
-color:rgb(109, 107, 107);
+  border: 1px solid rgb(223, 221, 221);
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 2px;
+  padding: 8px;
+  color: rgb(109, 107, 107);
 }
 
 .toolbar button[type="button"]:not(.change):hover {
-background-color: #eee;
-transform: rotate(280deg);
+  background-color: #eee;
+  transform: rotate(280deg);
 }
 
-
-@media (max-width: 500px){
-            
+@media (max-width: 500px) {
   .toolbar button[type="button"] {
-       
-        margin:2px;
-        padding:3px;
-        
-        }    
-    
-  
+    margin: 2px;
+    padding: 3px;
+  }
 }

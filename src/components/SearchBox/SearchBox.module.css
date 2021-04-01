@@ -1,8 +1,8 @@
-.textBox{
-max-width: 100%;
-  margin:10% 0%;
-  height:0%;
-  color:white;
+.textBox {
+  max-width: 100%;
+  margin: 10% 0%;
+  height: 0%;
+  color: white;
   border-bottom: 1px solid rgb(155, 154, 154);
   font-size: 15pt;
   font-weight: 100;
@@ -10,37 +10,35 @@ max-width: 100%;
 }
 
 .textBox input {
-  background-color:  rgb(204, 204, 204) ;
-
+  background-color: rgb(204, 204, 204);
 }
-.input-group-text{
+.input-group-text {
   background: rgb(172, 172, 172) !important;
 }
 
-.textBox input:focus{
-  background-color:rgb(211, 210, 210) ;
-  color:white;
+.textBox input:focus {
+  background-color: rgb(211, 210, 210);
+  color: white;
 
   border-bottom: 1px solid rgb(189, 188, 188);
 }
 
 .input_icons i {
   position: absolute;
-   margin:14px;
+  margin: 14px;
 }
 
 .input_icons {
   width: 100%;
-  margin-top:30px;
+  margin-top: 30px;
   margin-bottom: 30px;
-  color:rgb(96, 96, 97) !important;
+  color: rgb(96, 96, 97) !important;
 }
 
 .icon {
   padding: 10px;
   min-width: 40px;
-  color:rgb(197, 202, 206) !important;
- 
+  color: rgb(197, 202, 206) !important;
 }
 
 .input_field {
@@ -50,13 +48,12 @@ max-width: 100%;
   border: 0px;
   background-color: rgb(218, 216, 214);
   border-radius: 5px;
-  color:rgb(102, 100, 100);
+  color: rgb(102, 100, 100);
   font-size: 13pt;
   font-weight: 800;
   font-style: italic;
   caret-color: rgb(75, 61, 61);
-  
 }
-.input_field:focus{
-  outline:none;
+.input_field:focus {
+  outline: none;
 }

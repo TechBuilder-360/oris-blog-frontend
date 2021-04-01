@@ -9,7 +9,11 @@ const BrokenConnection = () => {
         status="500"
         title="500"
         subTitle="Sorry, something went wrong."
-        extra={<Button type="primary" onClick={()=>window.location.reload()}>Reload</Button>}
+        extra={
+          <Button type="primary" onClick={() => window.location.reload()}>
+            Reload
+          </Button>
+        }
       />
     </Container>
   );

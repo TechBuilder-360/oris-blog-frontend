@@ -1,4 +1,3 @@
-
 const Container = (props) => props.children;
 
-export default Container
+export default Container;
