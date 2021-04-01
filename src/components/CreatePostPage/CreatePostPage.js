@@ -71,7 +71,7 @@ function deleteTag(i){
 <Row>
 <Col md={12} sm={12} xs={12}>
 
-<Form.Control type="text" value={title} name="title" 
+<Form.Control type="text" value={title} name="title"  className={classes.title}
 onChange={(e)=>setTitle(e.target.value)} placeholder="Title" autoFocus/>
 </Col>
          </Row>  

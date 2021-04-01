@@ -30,15 +30,12 @@ dispatch(on_search(false))
 
   return (
     <Col md={12} style={{ padding:'0%' }}>
-      <Form >
-        <InputGroup className="mb-3" className={classes.textBox}>
-<InputGroup.Prepend>
- <InputGroup.Text> <Icon icon={faSearch}/> </InputGroup.Text>
-</InputGroup.Prepend>
-<Form.Control size="lg" value={value} type="text" placeholder="search for article"  onChange={(event)=>triggerSearch(event.target.value)} />
-        </InputGroup>
-    
-      </Form>
+      
+        
+        <div className={classes.input_icons}>
+        <i> <Icon className={classes.icon} icon={faSearch}/> </i>
+            <input value={value} className={classes.input_field} type="text" onChange={(event)=>triggerSearch(event.target.value)}/>
+      </div>
       
     </Col>
   );
@@ -47,7 +44,7 @@ const mapStateToProps = (state) => {
   return {
     post: state.blog.post,
    
-  };
+  }
 };
 
 

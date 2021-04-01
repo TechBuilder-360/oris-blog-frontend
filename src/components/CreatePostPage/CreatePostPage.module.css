@@ -66,15 +66,19 @@
 input[name="title"]{
     min-height: 70px;
     border: 0px;
+    font-style: italic;
+    font-size: 30pt;
     caret-color: rgb(137, 138, 137);
     text-indent: 0px;
     transition: text-indent 0.3s ease;
     
+    outline:none !important;
 }
 
 
-input[name="title"]:focus{
+.title:focus{
       text-indent:10px; 
+      outline:none !important;
       transition: text-indent 0.3s ease;}
 
 input[name="title"]::-webkit-input-placeholder{

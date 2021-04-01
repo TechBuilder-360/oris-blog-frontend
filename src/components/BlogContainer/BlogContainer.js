@@ -4,7 +4,7 @@ import Icon  from "../shared/Icon";
 import React from 'react';
 import {Col,Row} from 'react-bootstrap'
 import classes from './BlogContainer.module.css'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 
   const BlogContainer=(props) =>{
@@ -21,13 +21,13 @@ import { Link } from 'react-router-dom';
 
 <Col>
    <div className={classes.header}>
-   <div><Icon className={classes.icon} size="2x" icon={faImage}/>
+   <div><Icon className={classes.icon} size="1x" icon={faImage}/>
       <span>{blog.author}</span></div>
      </div> 
     <Link to={`post/${index}`}  className={classes.link}>
     <div className={classes.left}>
       <div>
-        <h4>{blog.header}</h4>
+        <span>{blog.header}</span>
         </div>
         </div>
   
