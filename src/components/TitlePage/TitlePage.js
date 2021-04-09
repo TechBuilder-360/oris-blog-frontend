@@ -1,10 +1,11 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
+import classes from './TitlePage.module.css'
 
 const TitlePage = () => {
   return (
     <div>
-      <ul>
+      <ul className={classes.ul}>
         <li>
           <h4>Title of the Articles</h4>
         </li>

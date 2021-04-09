@@ -1,13 +1,15 @@
 .progress {
   height: 2px !important;
+  margin:0% 20% 2% 20%;
 }
 .WrapperEditor {
   margin-top: 7%;
+
 }
 .editor {
   border: 0px;
-
-  height: 200px;
+  margin-bottom:1%;
+  height: auto;
 }
 
 .btnGroup {
@@ -17,6 +19,11 @@
   padding: 2% 0% 0%;
 }
 
+.image{
+  border-radius: 6px;
+  margin: 1% 1% 1% 1%;
+
+}
 .toolbar button[type="button"] {
   border: 1px solid rgb(223, 221, 221);
   background-color: #fff;
@@ -29,12 +36,18 @@
 
 .toolbar button[type="button"]:not(.change):hover {
   background-color: #eee;
-  transform: rotate(280deg);
+  
 }
 
 @media (max-width: 500px) {
   .toolbar button[type="button"] {
     margin: 2px;
     padding: 3px;
+  }
+
+  .editor {
+    border: 0px;
+  margin-bottom:1%;
+    height: auto;
   }
 }

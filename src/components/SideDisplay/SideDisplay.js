@@ -3,7 +3,7 @@ import Icon from "../shared/Icon";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import classes from "./SideDisplay.module.css";
 import { connect } from "react-redux";
-import { truncateText } from "../shared/utility";
+import { truncateText } from "../shared/utility"
 
 const SideDisplay = (props) => {
   return (
@@ -11,7 +11,7 @@ const SideDisplay = (props) => {
       <h4>Recommendations</h4>
 
       {props.author.map((dat, index) => (
-        <div className={classes.divBody}>
+        <div className={classes.divBody} key={index}>
           <div className={classes.icon}>
             <Icon size="3x" icon={faCircle} />
           </div>

@@ -5,9 +5,9 @@ import {
   faSave,
   faStopwatch,
 } from "@fortawesome/free-solid-svg-icons";
-import Icon from "../shared/Icon";
+import Icon from "../shared/Icon"
 import React from "react";
-import { Col, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import classes from "./BlogContainer.module.css";
 import { Link } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const BlogContainer = (props) => {
       {props.post.length > 0 ? (
         props.post.map((blog, index) => (
           <Row className={classes.main} key={index}>
-            <Col>
+            <Col md={8} sm={8} xs={8}>
               <div className={classes.header}>
                 <div>
                   <Icon className={classes.icon} size="1x" icon={faImage} />
@@ -48,17 +48,26 @@ const BlogContainer = (props) => {
               </Link>
 
               <div className={classes.left}>
-                <div>
+                <div >
+                  <Button className={classes.btn} variant="primary" size="sm">
                   <Icon className={classes.icon} size="1x" icon={faBook} />
                   <span>Follow</span>
+                  </Button>
+                  
                 </div>
-                <div>
+                <div >
+                  <Button className={classes.btn} variant="primary" size="sm">
                   <Icon className={classes.icon} size="1x" icon={faSave} />
                   <span>Save</span>
+                  </Button>
+                  
                 </div>
                 <div>
+                  <Button className={classes.btn} variant="default" size="sm">
                   <Icon className={classes.icon} size="1x" icon={faPencilAlt} />
                   <span>Comment</span>
+                  </Button>
+                  
                 </div>
               </div>
             </Col>

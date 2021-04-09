@@ -2,62 +2,111 @@ import React, { useState } from "react";
 import { Row, Col, Form, Button} from "react-bootstrap";
 import { add_post } from "../../store/actions/blogAction";
 import { useDispatch } from "react-redux";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus,faImage } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import classes from "./CreatePostPage.module.css";
 import Icon from "../shared/Icon";
 import EditorContainer from "../shared/Editor/EditorContainer";
+import { mapOptions } from "../shared/utility";
 
 const CreatePostPage = (props) => {
   let post = {
     header: "",
     body: "",
     tags: [],
+    image:[],
   };
+  
   const dispatch = useDispatch();
   const [tags, setTags] = useState([]);
   const [val, setVal] = useState("");
   const [title, setTitle] = useState("");
-//   const [body, setBody] = useState("");
-
+  const [input,setInput]=useState([])
+  const [btnVisible,setBtnVisible]=useState(true)
+  const [file,setFile]=useState([])
+  const [isFile,setIsFile]=useState(false)
+  const [image,setImage]=useState([])
+  
   function submit() {
     post = {
       header: title,
       body: props.editorText,
       tags: tags,
+      image:image,
     };
-    console.log(post);
+    
     dispatch(add_post(post));
   }
   function clearBox() {
     setTags([]);
     setTitle("");
-//     setBody("");
     setVal("");
+    setImage([])
   }
 
   function addClick() {
+  
+    var found = false;
+for (var i = 0; i < input.length && !found; i++) {
+  if (input[i] === null) {
+    found = true;
+    console.log(input)
+    break;
+  }
+}
+    if(input.length===0 || found===true){
+
+      return null
+    }else{
     const value = val.toUpperCase();
-    if (tags.length > 1) {
-      alert("maximum of two can be selected");
-      return null;
-    }
+
     if (tags.find((tag) => tag.toUpperCase() === value)) {
       return;
     }
     setTags([...tags, value]);
+    setVal("")
+    
   }
-
+  }
   function deleteTag(i) {
     const newTags = [...tags];
+
+    if (tags.length < 1) {
+      
+      setBtnVisible(true)
+      }
     newTags.splice(i, 1);
     setTags(newTags);
+    
   }
+  function onChange(e){
+   
+    var input=[]
+    input.push(val)
+    setInput(input)
+    setVal(e.target.value)
+      if (tags.length > 1) {
+
+        setBtnVisible(false)
+        }else{
+          setBtnVisible(true)
+        }
+        
+    }
+
+  function handleChange(event){
+const files=URL.createObjectURL(event.target.files[0])
+setImage(event.target.files[0])
+setFile(files)
+setIsFile(true)
+
+  }
+  
 
   return (
     <Row>
-      <Col md={2}></Col>
-      <Col md={8}>
+      
+      <Col md={12}>
         <Form className={classes.form}>
           <Form.Group>
             <Row>
@@ -76,10 +125,17 @@ const CreatePostPage = (props) => {
           </Form.Group>
 
           <Form.Group>
-            <EditorContainer />
+            <EditorContainer isFile={isFile} file={file}/>
           </Form.Group>
 
-          <Form.Group className={classes.WrapperEditor}>
+<Form.Group>
+<label  className={classes.image}>
+<Icon size="2x" icon={faImage} /> 
+<input type="file" onChange={handleChange}/>
+  </label>
+</Form.Group>
+
+          <Form.Group>
             <Form.Label>
               <b>Category: </b>
               <span className={classes.max}>
@@ -91,30 +147,32 @@ const CreatePostPage = (props) => {
               <Col>
                 <Form.Control
                   as="select"
+                value={val}
                   className={classes.input}
-                  onChange={(e) => setVal(e.target.value)}
-                >
-                  <option disabled>SELECT</option>
-                  {props.category.map((cat, index) => (
-                    <option key={index} value={cat}>
-                      {cat}
-                    </option>
-                  ))}
+                  onChange={(e)=> onChange(e)
+                
+                }
+                  >
+                 <option disabled value="" selected>Click here to add</option>
+                  {mapOptions(props.category)}
                 </Form.Control>
 
                 <ul className={classes.tag}>
-                  {tags.map((tag, index) => (
+                  {tags.map((tag, index) => 
                     <li key={index} onClick={() => deleteTag(index)}>
                       {tag}
                     </li>
-                  ))}
+                  )}   
                 </ul>
               </Col>
               <Col>
-                <Button variant="secondary" onClick={addClick}>
-                  <Icon size="1x" icon={faPlus} />
-                  Add
-                </Button>
+              {btnVisible?
+               <Button variant="secondary" onClick={addClick}>
+               <Icon size="1x" icon={faPlus} />
+               Add
+             </Button>
+             :null
+              }
               </Col>
             </Row>
           </Form.Group>
@@ -129,7 +187,6 @@ const CreatePostPage = (props) => {
           </Form.Group>
         </Form>
       </Col>
-      <Col md={2}></Col>
     </Row>
   );
 };
