@@ -16,7 +16,7 @@ const HomeNavBar = (props) => {
         </Link>
         <div className={classes.Nav_item}>
           <NavLink to={"/"}>Home</NavLink>
-          <NavLink to={"/create"}>Create Blog</NavLink>
+          <NavLink to={"/create"}>Create Post</NavLink>
           <Dropdown id="basic">
             <Dropdown.Toggle variant="secondary">Navigation</Dropdown.Toggle>
 
