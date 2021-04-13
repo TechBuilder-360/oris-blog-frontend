@@ -54,7 +54,7 @@ const BlogContainer = (props) => {
                 </div>
                 <div>
                   <Icon className={classes.icon} size="1x" icon={faSave} />
-                  <span>Save</span>
+                  <span>Bookmark</span>
                 </div>
                 <div>
                   <Icon className={classes.icon} size="1x" icon={faPencilAlt} />
@@ -62,8 +62,8 @@ const BlogContainer = (props) => {
                 </div>
               </div>
             </Col>
-
-            <Col md={4} sm={4} xs={4} className={classes.right}></Col>
+         
+            <Col md={4} sm={4} xs={4} className={classes.right}>   <Link to={`post/${index}`} className={classes.link}></Link></Col>
           </Row>
         ))
       ) : (
