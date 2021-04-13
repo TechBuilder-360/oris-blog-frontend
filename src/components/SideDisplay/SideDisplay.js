@@ -2,15 +2,17 @@ import React from "react";
 import Icon from "../shared/Icon";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import classes from "./SideDisplay.module.css";
-import { connect } from "react-redux";
 import { truncateText } from "../shared/utility";
+import { useSelector, shallowEqual } from "react-redux";
 
-const SideDisplay = (props) => {
+const SideDisplay = () => {
+  const author = useSelector((state) => state.blog.author, shallowEqual);
+
   return (
     <div className={classes.sideNav}>
       <h4>Recommendations</h4>
 
-      {props.author.map((dat, index) => (
+      {author.map((dat) => (
         <div className={classes.divBody}>
           <div className={classes.icon}>
             <Icon size="3x" icon={faCircle} />
@@ -29,11 +31,4 @@ const SideDisplay = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    post: state.blog.post,
-    author: state.blog.author,
-  };
-};
-
-export default connect(mapStateToProps)(SideDisplay);
+export default SideDisplay;
