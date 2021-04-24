@@ -80,13 +80,12 @@ input[name="title"] {
   caret-color: rgb(137, 138, 137);
   text-indent: 0px;
   transition: text-indent 0.3s ease;
-
-  outline: none !important;
+  outline-width: 0px;
 }
 
-.title:focus {
-  text-indent: 10px;
-  outline: none !important;
+input[name="title"]:focus {
+  text-indent: 20px;
+  outline: none;
   transition: text-indent 0.3s ease;
 }
 

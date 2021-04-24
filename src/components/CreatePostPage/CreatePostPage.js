@@ -21,7 +21,6 @@ const CreatePostPage = (props) => {
   const [tags, setTags] = useState([]);
   const [val, setVal] = useState("");
   const [title, setTitle] = useState("");
-  const [input,setInput]=useState([])
   const [btnVisible,setBtnVisible]=useState(true)
   const [file,setFile]=useState([])
   const [isFile,setIsFile]=useState(false)
@@ -44,35 +43,22 @@ const CreatePostPage = (props) => {
     setImage([])
   }
 
-  function addClick() {
-  
-    var found = false;
-for (var i = 0; i < input.length && !found; i++) {
-  if (input[i] === null) {
-    found = true;
-    console.log(input)
-    break;
-  }
-}
-    if(input.length===0 || found===true){
-
-      return null
-    }else{
+  function addClick(){
     const value = val.toUpperCase();
-
     if (tags.find((tag) => tag.toUpperCase() === value)) {
       return;
+    }
+    if(value === ""){
+      return
     }
     setTags([...tags, value]);
     setVal("")
     
   }
-  }
+  
   function deleteTag(i) {
     const newTags = [...tags];
-
     if (tags.length < 1) {
-      
       setBtnVisible(true)
       }
     newTags.splice(i, 1);
@@ -80,18 +66,12 @@ for (var i = 0; i < input.length && !found; i++) {
     
   }
   function onChange(e){
-   
-    var input=[]
-    input.push(val)
-    setInput(input)
     setVal(e.target.value)
       if (tags.length > 1) {
-
         setBtnVisible(false)
         }else{
           setBtnVisible(true)
         }
-        
     }
 
   function handleChange(event){
