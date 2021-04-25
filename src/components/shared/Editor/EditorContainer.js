@@ -20,6 +20,7 @@ import {
 import {
   Image,
   ProgressBar,
+  Button
 } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import classes from "./EditorContainer.module.css";
@@ -35,9 +36,16 @@ const EditorContainer = (props) => {
   const [progress, setProgress] = useState(null);
   const [variant, setVariant] = useState("");
 
+
+function clearAll(){
+  setEditorState(EditorState.createEmpty())
+  props.clearBox()
+}
+
   function getBlockClassName(name) {
     return `richText-block richText-${name}-block`;
 }
+
 
    function myBlockStyleFn(contentBlock) {
     const type = contentBlock.getType();
@@ -329,6 +337,11 @@ function setBlockData(editorState, data) {
               editorState
             );
           })}
+
+          <Button variant="secondary" onClick={clearAll} >
+              Clear
+            </Button>  
+ 
         </div>
       </div>
       <div className={classes.editor}>
@@ -356,8 +369,7 @@ width={120}
 className={classes.image}/>
 :null
 }
-      
- 
+
       </div>
     </Col>
   );

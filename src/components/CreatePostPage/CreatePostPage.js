@@ -36,11 +36,12 @@ const CreatePostPage = (props) => {
     
     dispatch(add_post(post));
   }
-  function clearBox() {
+  function clearBox(){
     setTags([]);
     setTitle("");
     setVal("");
-    setImage([])
+    setImage([]);
+    
   }
 
   function addClick(){
@@ -105,7 +106,7 @@ setIsFile(true)
           </Form.Group>
 
           <Form.Group>
-            <EditorContainer isFile={isFile} file={file}/>
+            <EditorContainer clearBox={clearBox} isFile={isFile} file={file}/>
           </Form.Group>
 
 <Form.Group>
@@ -160,9 +161,7 @@ setIsFile(true)
             <Button variant="secondary" onClick={submit}>
               Post
             </Button>
-            <Button variant="secondary" onClick={clearBox}>
-              Clear
-            </Button>
+           
             <Button variant="default">Draft</Button>
           </Form.Group>
         </Form>
