@@ -41,120 +41,6 @@ function clearAll(){
   setEditorState(EditorState.createEmpty())
   props.clearBox()
 }
-
-  function getBlockClassName(name) {
-    return `richText-block richText-${name}-block`;
-}
-
-
-   function myBlockStyleFn(contentBlock) {
-    const type = contentBlock.getType();
-
-    const blockAlignment =
-        contentBlock.getData() && contentBlock.getData().get('text-align');
-
-    if (blockAlignment) {
-        return `${getBlockClassName(blockAlignment)} richText-textAlignment-block`;
-    }
-
-    if (type === 'unstyled') {
-        return getBlockClassName('unstyled');
-    }
-
-    return null;
-}
-   function getSelectedBlocksMap(editorState: EditorState): OrderedMap {
-    const selectionState = editorState.getSelection();
-    const contentState = editorState.getCurrentContent();
-    const startKey = selectionState.getStartKey();
-    const endKey = selectionState.getEndKey();
-    const blockMap = contentState.getBlockMap();
-    return blockMap
-        .toSeq()
-        .skipUntil((_, k) => k === startKey)
-        .takeUntil((_, k) => k === endKey)
-        .concat([[endKey, blockMap.get(endKey)]]);
-}
-
-
- function getSelectedBlocksList(editorState: EditorState): List {
-    return getSelectedBlocksMap(editorState).toList();
-}
-
-   function getSelectedBlocksMetadata(editorState: EditorState): Map {
-    let metaData = new Immutable.Map({});
-    const selectedBlocks = getSelectedBlocksList(editorState);
-    if (selectedBlocks && selectedBlocks.size > 0) {
-        for (let i = 0; i < selectedBlocks.size; i += 1) {
-            const data = selectedBlocks.get(i).getData();
-            if (!data || data.size === 0) {
-                metaData = metaData.clear();
-                break;
-            }
-            if (i === 0) {
-                metaData = data;
-            } else {
-                metaData.forEach((value, key) => {
-                    // eslint-disable-line no-loop-func
-                    if (!data.get(key) || data.get(key) !== value) {
-                        metaData = metaData.delete(key);
-                    }
-                });
-                if (metaData.size === 0) {
-                    metaData = metaData.clear();
-                    break;
-                }
-            }
-        }
-    }
-    return metaData;
-}
-
-function setBlockData(editorState, data) {
-    const newContentState = Modifier.setBlockData(
-        editorState.getCurrentContent(),
-        editorState.getSelection(),
-        data
-    );
-
-    return EditorState.push(editorState, newContentState, 'change-block-data');
-}
-
-  function getNextAlignment(currentAlignment) {
-    switch (currentAlignment) {
-        case 'right':
-            return 'left';
-        case 'left':
-            return 'center';
-        case 'center':
-            return 'right';
-
-        default:
-            return 'left';
-    }
-}
-
- function TextAlignmentControl({ editorState, onToggle, styles }) {
-    return (
-        <div
-            
-            onMouseDown={e => {
-                e.preventDefault();
-                onToggle(
-                    setBlockData(editorState, {
-                        'text-align': getNextAlignment(
-                            getSelectedBlocksMetadata(editorState).get(
-                                'text-align'
-                            )
-                        )
-                    })
-                );
-            }}
-        >
-            Align
-        </div>
-    );
-}
   
   const handleKeyCommand = (command) => {
     let editorStat = null
@@ -172,25 +58,22 @@ function setBlockData(editorState, data) {
 
   function toggleBlockType(event) {
     event.preventDefault();
-
     let block = event.currentTarget.getAttribute("data-block");
-
     setEditorState(RichUtils.toggleBlockType(editorState, block));
   }
+
   function toggleInlineStyle(event) {
     event.preventDefault();
     let style = event.currentTarget.getAttribute("data-style");
-
     setEditorState(RichUtils.toggleInlineStyle(editorState, style));
   }
+
   const MAX_LENGTH = 1000;
-  
   const handleChange = (editorState) => {
     const currentContent = editorState.getCurrentContent();
     const currentContentLength = currentContent.getPlainText("").length;
     const selectedTextLength = _getLengthOfSelectedText();
     setProgress(currentContentLength - selectedTextLength);
-   
     const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
   const mappedBlocks = blocks.map(
     (block) => (!block.text.trim() && "\n") || block.text
@@ -210,7 +93,6 @@ function setBlockData(editorState, data) {
   }
 
   setEditorState(editorState);
-   
     if (
       progress >= MAX_LENGTH * (90 / 100) ||
       progress === MAX_LENGTH * (99 / 100)
@@ -254,7 +136,6 @@ function setBlockData(editorState, data) {
           currentSelection.getEndOffset() - currentSelection.getStartOffset();
       } else {
         let currentKey = startKey;
-
         while (currentKey && currentKey !== keyAfterEnd) {
           if (currentKey === startKey) {
             length += startSelectedTextLength + 1;
@@ -263,14 +144,13 @@ function setBlockData(editorState, data) {
           } else {
             length += currentContent.getBlockForKey(currentKey).getLength() + 1;
           }
-
           currentKey = currentContent.getKeyAfter(currentKey);
         }
       }
     }
-
     return length;
   };
+
 
   const _handleBeforeInput = () => {
     const currentContent = editorState.getCurrentContent();
@@ -279,8 +159,6 @@ function setBlockData(editorState, data) {
     setProgress(currentContentLength - selectedTextLength);
     if (currentContentLength - selectedTextLength > MAX_LENGTH - 1) {
       setVariant("danger");
-      
-
       return "handled";
     }
   };
@@ -295,7 +173,6 @@ function setBlockData(editorState, data) {
       MAX_LENGTH
     ) {
       setVariant("danger");
-      
       return "handled";
     }
   };
