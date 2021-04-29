@@ -13,12 +13,12 @@ import {
   Editor,
   EditorState,
   RichUtils,
-  // getDefaultKeyBinding,
-  // KeyBindingUtil,
   convertToRaw,
 } from "draft-js";
 import {
+  Image,
   ProgressBar,
+  Button
 } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import classes from "./EditorContainer.module.css";
@@ -34,6 +34,12 @@ const EditorContainer = (props) => {
   const [progress, setProgress] = useState(null);
   const [variant, setVariant] = useState("");
 
+
+function clearAll(){
+  setEditorState(EditorState.createEmpty())
+  props.clearBox()
+}
+  
   const handleKeyCommand = (command) => {
     let editorStat = null
     if (!editorState && command === "highlight") {
@@ -50,59 +56,62 @@ const EditorContainer = (props) => {
 
   function toggleBlockType(event) {
     event.preventDefault();
-
     let block = event.currentTarget.getAttribute("data-block");
-
     setEditorState(RichUtils.toggleBlockType(editorState, block));
   }
+
   function toggleInlineStyle(event) {
     event.preventDefault();
     let style = event.currentTarget.getAttribute("data-style");
-
     setEditorState(RichUtils.toggleInlineStyle(editorState, style));
   }
-  const MAX_LENGTH = 10;
 
+  const MAX_LENGTH = 1000;
   const handleChange = (editorState) => {
     const currentContent = editorState.getCurrentContent();
     const currentContentLength = currentContent.getPlainText("").length;
     const selectedTextLength = _getLengthOfSelectedText();
     setProgress(currentContentLength - selectedTextLength);
-    console.log(progress);
+    const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
+  const mappedBlocks = blocks.map(
+    (block) => (!block.text.trim() && "\n") || block.text
+  );
+  let newText = "";
+  for (let i = 0; i < mappedBlocks.length; i++) {
+    const block = mappedBlocks[i];
+
+    // handle last block
+    if (i === mappedBlocks.length - 1) {
+      newText += block;
+    } else {
+      // otherwise we join with \n, except if the block is already a \n
+      if (block === "\n") newText += block;
+      else newText += block + "\n";
+    }
+  }
+
+  setEditorState(editorState);
     if (
       progress >= MAX_LENGTH * (90 / 100) ||
       progress === MAX_LENGTH * (99 / 100)
     ) {
       setVariant("warning");
+      setText(newText);
+      dispatch(add_text(text));
+      
     }
     if (progress < MAX_LENGTH * (90 / 100)) {
       setVariant("secondary");
+      setText(newText);
+      dispatch(add_text(text));
     }
 
-    const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
-    const mappedBlocks = blocks.map(
-      (block) => (!block.text.trim() && "\n") || block.text
-    );
 
-    let newText = "";
-    for (let i = 0; i < mappedBlocks.length; i++) {
-      const block = mappedBlocks[i];
-
-      // handle last block
-      if (i === mappedBlocks.length - 1) {
-        newText += block;
-      } else {
-        // otherwise we join with \n, except if the block is already a \n
-        if (block === "\n") newText += block;
-        else newText += block + "\n";
-      }
-    }
-    setEditorState(editorState);
-    setText(newText);
-    dispatch(add_text(text));
+    
+    
   };
 
-  const _getLengthOfSelectedText = () => {
+  const _getLengthOfSelectedText = () =>{
     const currentSelection = editorState.getSelection();
     const isCollapsed = currentSelection.isCollapsed();
 
@@ -119,13 +128,12 @@ const EditorContainer = (props) => {
         startBlockTextLength - currentSelection.getStartOffset();
       const endSelectedTextLength = currentSelection.getEndOffset();
       const keyAfterEnd = currentContent.getKeyAfter(endKey);
-      console.log(currentSelection);
+      console.log(startKey);
       if (isStartAndEndBlockAreTheSame) {
         length +=
           currentSelection.getEndOffset() - currentSelection.getStartOffset();
       } else {
         let currentKey = startKey;
-
         while (currentKey && currentKey !== keyAfterEnd) {
           if (currentKey === startKey) {
             length += startSelectedTextLength + 1;
@@ -134,14 +142,13 @@ const EditorContainer = (props) => {
           } else {
             length += currentContent.getBlockForKey(currentKey).getLength() + 1;
           }
-
           currentKey = currentContent.getKeyAfter(currentKey);
         }
       }
     }
-
     return length;
   };
+
 
   const _handleBeforeInput = () => {
     const currentContent = editorState.getCurrentContent();
@@ -150,8 +157,6 @@ const EditorContainer = (props) => {
     setProgress(currentContentLength - selectedTextLength);
     if (currentContentLength - selectedTextLength > MAX_LENGTH - 1) {
       setVariant("danger");
-      console.log("you can type max ten characters");
-
       return "handled";
     }
   };
@@ -166,53 +171,11 @@ const EditorContainer = (props) => {
       MAX_LENGTH
     ) {
       setVariant("danger");
-      console.log("you can type max ten characters");
-
       return "handled";
     }
   };
 
-  // const keyBindingFunction = (event) => {
-  //   if (
-  //     KeyBindingUtil.hasCommandModifier(event) &&
-  //     event.shiftKey &&
-  //     event.key === "x"
-  //   ) {
-  //     return "strikethrough";
-  //   }
-
-  //   if (
-  //     KeyBindingUtil.hasCommandModifier(event) &&
-  //     event.shiftKey &&
-  //     event.key === "7"
-  //   ) {
-  //     return "ordered-list";
-  //   }
-
-  //   if (
-  //     KeyBindingUtil.hasCommandModifier(event) &&
-  //     event.shiftKey &&
-  //     event.key === "8"
-  //   ) {
-  //     return "unordered-list";
-  //   }
-
-  //   if (
-  //     KeyBindingUtil.hasCommandModifier(event) &&
-  //     event.shiftKey &&
-  //     event.key === "9"
-  //   ) {
-  //     return "blockquote";
-  //   }
-  //   if (
-  //     KeyBindingUtil.hasCommandModifier(event) &&
-  //     event.shiftKey &&
-  //     event.key === "h"
-  //   ) {
-  //     return "highlight";
-  //   }
-  //   return getDefaultKeyBinding(event);
-  // };
+   
 
   return (
     <Col>
@@ -249,6 +212,11 @@ const EditorContainer = (props) => {
               editorState
             );
           })}
+
+          <Button variant="secondary" onClick={clearAll} >
+              Clear
+            </Button>  
+ 
         </div>
       </div>
       <div className={classes.editor}>
@@ -261,13 +229,22 @@ const EditorContainer = (props) => {
           handleKeyCommand={handleKeyCommand}
           onChange={handleChange}
         />
-        <ProgressBar
+         <ProgressBar
           className={classes.progress}
           variant={variant}
           now={progress}
           min={0}
           max={MAX_LENGTH}
         />
+        {props.isFile?
+<Image 
+src={props.file}  
+width={120}
+ height={120} 
+className={classes.image}/>
+:null
+}
+
       </div>
     </Col>
   );

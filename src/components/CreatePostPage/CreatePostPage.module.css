@@ -1,17 +1,36 @@
 .form {
-  box-shadow: 0px 0px 20px rgb(104, 102, 102, 0.4);
+  
   margin: 50px;
   padding: 50px;
   width: auto;
 }
 
+
 .input {
-  border-width: 0px;
+  border-width: 0px !important;
   background-color: rgb(235, 234, 234);
+  font-style: italic !important;
+}
+.input option:disabled {
+  background-color: rgb(160, 159, 159) !important;
+  color:white;
+  
+  
+}
+
+
+.image input[type="file"]{
+
+display: none;
+}
+.image{
+cursor: pointer;
+color:rgb(150, 149, 149);
+
 }
 .input:hover {
-  border-width: 0px;
-  background-color: rgb(235, 234, 234);
+  
+  background-color: rgb(234, 235, 235);
 }
 .tag li {
   display: inline-block;
@@ -61,13 +80,12 @@ input[name="title"] {
   caret-color: rgb(137, 138, 137);
   text-indent: 0px;
   transition: text-indent 0.3s ease;
-
-  outline: none !important;
+  outline-width: 0px;
 }
 
-.title:focus {
-  text-indent: 10px;
-  outline: none !important;
+input[name="title"]:focus {
+  text-indent: 20px;
+  outline: none;
   transition: text-indent 0.3s ease;
 }
 
@@ -88,7 +106,7 @@ input[name="title"]::-webkit-input-placeholder {
 
 @media (max-width: 900px) {
   .form {
-    box-shadow: 0px 0px 20px rgb(104, 102, 102, 0.6);
+    
 
     margin: 17% 0% 17% 0%;
     padding: 5%;

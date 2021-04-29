@@ -11,7 +11,6 @@ const SideDisplay = () => {
   return (
     <div className={classes.sideNav}>
       <h4>Recommendations</h4>
-
       {author.map((dat) => (
         <div className={classes.divBody}>
           <div className={classes.icon}>

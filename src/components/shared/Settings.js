@@ -7,7 +7,6 @@ import {
   faListOl,
   faListUl,
   faWindowMinimize,
-  faQuoteLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import Icon from "./Icon";
 
@@ -114,12 +113,6 @@ export const blockTypeButtons = [
   },
 
   {
-    value: "Blockquote",
-    block: "blockquote",
-    icon: faQuoteLeft,
-  },
-
-  {
     value: "Unordered List",
     block: "unordered-list-item",
     icon: faListUl,
@@ -163,7 +156,7 @@ export const btn = [
 ];
 
 export const styleMap = {
-  HIGHLIGHT: {
+  HIGHLIGHT:{
     backgroundColor: "black",
     color: "white",
   },

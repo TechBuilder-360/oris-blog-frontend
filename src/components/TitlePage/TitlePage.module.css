@@ -1,8 +1,6 @@
-ul li {
+.ul li {
   list-style: none;
   color: rgb(105, 105, 105);
+  margin-left:10%;
 }
 
-ul {
-  margin-left: 10%;
-}
