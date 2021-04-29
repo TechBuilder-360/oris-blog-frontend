@@ -58,9 +58,7 @@ const BlogContainer = (props) => {
                 <div >
                   <Button className={classes.btn} variant="primary" size="sm">
                   <Icon className={classes.icon} size="1x" icon={faSave} />
-                  <span>Save</span>
-                  </Button>
-                  
+                  <span>Bookmark</span>
                 </div>
                 <div>
                   <Button className={classes.btn} variant="default" size="sm">
@@ -71,8 +69,8 @@ const BlogContainer = (props) => {
                 </div>
               </div>
             </Col>
-
-            <Col md={4} sm={4} xs={4} className={classes.right}></Col>
+         
+            <Col md={4} sm={4} xs={4} className={classes.right}>   <Link to={`post/${index}`} className={classes.link}></Link></Col>
           </Row>
         ))
       ) : (

@@ -3,7 +3,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import classes from "./Homepage.module.css";
 import { connect } from "react-redux";
 import SideDisplay from "../SideDisplay/SideDisplay";
-import TitlePage from "../TitlePage/TitlePage";
 import Section from "../Section/Section";
 
 const Homepage = (props) => {
@@ -19,7 +18,6 @@ const Homepage = (props) => {
 
         <Col md={5} className={classes.side}>
           <SideDisplay />
-          <TitlePage />
         </Col>
       </Row>
     </Container>
