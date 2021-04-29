@@ -7,7 +7,6 @@ import {
   faListOl,
   faListUl,
   faWindowMinimize,
-  faQuoteLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import Icon from "./Icon";
 

@@ -9,12 +9,10 @@ import {
   TextButton,
   styleMap,
 } from "../Settings";
-import Immutable from 'immutable';
 import {
   Editor,
   EditorState,
   RichUtils,
-  Modifier,
   convertToRaw,
 } from "draft-js";
 import {

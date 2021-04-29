@@ -1,92 +1,81 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Button} from "react-bootstrap";
+import { Row, Col, Form, Button } from "react-bootstrap";
 import { add_post } from "../../store/actions/blogAction";
-import { useDispatch } from "react-redux";
-import { faPlus,faImage } from "@fortawesome/free-solid-svg-icons";
-import { connect } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import { faPlus, faImage } from "@fortawesome/free-solid-svg-icons";
 import classes from "./CreatePostPage.module.css";
 import Icon from "../shared/Icon";
 import EditorContainer from "../shared/Editor/EditorContainer";
 import { mapOptions } from "../shared/utility";
 
-const CreatePostPage = (props) => {
+const CreatePostPage = () => {
+  const editorText = useSelector((state) => state.blog.editor, shallowEqual);
+  const category = useSelector((state) => state.blog.categories, shallowEqual);
+
   let post = {
     header: "",
     body: "",
     tags: [],
-    image:[],
+    image: [],
   };
-  
+
   const dispatch = useDispatch();
   const [tags, setTags] = useState([]);
   const [val, setVal] = useState("");
   const [title, setTitle] = useState("");
-  const [btnVisible,setBtnVisible]=useState(true)
-  const [file,setFile]=useState([])
-  const [isFile,setIsFile]=useState(false)
-  const [image,setImage]=useState([])
-  
+  const [file, setFile] = useState([]);
+  const [isFile, setIsFile] = useState(false);
+  const [image, setImage] = useState([]);
+
   function submit() {
     post = {
       header: title,
-      body: props.editorText,
+      body: editorText,
       tags: tags,
-      image:image,
+      image: image,
     };
-    
+
     dispatch(add_post(post));
   }
-  function clearBox(){
+
+  const clearBox = () => {
     setTags([]);
     setTitle("");
     setVal("");
     setImage([]);
-    
-  }
+  };
 
-  function addClick(){
+  const addClick = () => {
     const value = val.toUpperCase();
     if (tags.find((tag) => tag.toUpperCase() === value)) {
       return;
     }
-    if(value === ""){
-      return
+    if (value === "") {
+      return;
     }
     setTags([...tags, value]);
-    setVal("")
-    
-  }
-  
-  function deleteTag(i) {
+    setVal("");
+  };
+
+  const deleteTag = (tagIndex) => {
     const newTags = [...tags];
-    if (tags.length < 1) {
-      setBtnVisible(true)
-      }
-    newTags.splice(i, 1);
+    newTags.splice(tagIndex, 1);
     setTags(newTags);
-    
-  }
-  function onChange(e){
-    setVal(e.target.value)
-      if (tags.length > 1) {
-        setBtnVisible(false)
-        }else{
-          setBtnVisible(true)
-        }
-    }
+  };
 
-  function handleChange(event){
-const files=URL.createObjectURL(event.target.files[0])
-setImage(event.target.files[0])
-setFile(files)
-setIsFile(true)
+  const onChange = (e) => {
+    setVal(e.target.value);
+  };
 
-  }
-  
+  const handleChange = (event) => {
+    const files = URL.createObjectURL(event.target.files[0]);
+    setImage(event.target.files[0]);
+    setFile(files);
+    setIsFile(true);
+  };
 
   return (
     <Row>
-      
       <Col md={12}>
         <Form className={classes.form}>
           <Form.Group>
@@ -106,15 +95,15 @@ setIsFile(true)
           </Form.Group>
 
           <Form.Group>
-            <EditorContainer clearBox={clearBox} isFile={isFile} file={file}/>
+            <EditorContainer clearBox={clearBox} isFile={isFile} file={file} />
           </Form.Group>
 
-<Form.Group>
-<label  className={classes.image}>
-<Icon size="2x" icon={faImage} /> 
-<input type="file" onChange={handleChange}/>
-  </label>
-</Form.Group>
+          <Form.Group>
+            <label className={classes.image}>
+              <Icon size="2x" icon={faImage} />
+              <input type="file" onChange={handleChange} />
+            </label>
+          </Form.Group>
 
           <Form.Group>
             <Form.Label>
@@ -128,32 +117,32 @@ setIsFile(true)
               <Col>
                 <Form.Control
                   as="select"
-                value={val}
+                  value={val}
                   className={classes.input}
-                  onChange={(e)=> onChange(e)
-                
-                }
-                  >
-                 <option disabled value="" selected>Click here to add</option>
-                  {mapOptions(props.category)}
+                  onChange={(e) => onChange(e)}
+                  disabled={tags.length === 2 ? true : false}
+                >
+                  <option disabled value="" selected>
+                    Click here to add
+                  </option>
+                  {mapOptions(category)}
                 </Form.Control>
 
                 <ul className={classes.tag}>
-                  {tags.map((tag, index) => 
+                  {tags.map((tag, index) => (
                     <li key={index} onClick={() => deleteTag(index)}>
                       {tag}
                     </li>
-                  )}   
+                  ))}
                 </ul>
               </Col>
               <Col>
-              {btnVisible?
-               <Button variant="secondary" onClick={addClick}>
-               <Icon size="1x" icon={faPlus} />
-               Add
-             </Button>
-             :null
-              }
+                {tags.length === 2 ? null : (
+                  <Button variant="secondary" onClick={addClick}>
+                    <Icon size="1x" icon={faPlus} />
+                    Add
+                  </Button>
+                )}
               </Col>
             </Row>
           </Form.Group>
@@ -161,7 +150,7 @@ setIsFile(true)
             <Button variant="secondary" onClick={submit}>
               Post
             </Button>
-           
+
             <Button variant="default">Draft</Button>
           </Form.Group>
         </Form>
@@ -170,11 +159,4 @@ setIsFile(true)
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    editorText: state.blog.editor,
-    category: state.blog.categories,
-  };
-};
-
-export default connect(mapStateToProps)(CreatePostPage);
+export default CreatePostPage;
