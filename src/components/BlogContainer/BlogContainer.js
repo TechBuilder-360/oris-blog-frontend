@@ -59,6 +59,7 @@ const BlogContainer = (props) => {
                   <Button className={classes.btn} variant="primary" size="sm">
                   <Icon className={classes.icon} size="1x" icon={faSave} />
                   <span>Bookmark</span>
+                  </Button>
                 </div>
                 <div>
                   <Button className={classes.btn} variant="default" size="sm">
