@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import HomeNavBar from "./components/Navigation/main-navigation";
 import Wrapper from "./container/Container";
+import classes from "./App.module.css";
 import Homepage from "./components/Homepage/Homepage";
 import CreatePostPage from "./components/CreatePostPage/CreatePostPage";
 import { Route, Switch } from "react-router-dom";
@@ -19,7 +20,7 @@ function App() {
   );
 
   return (
-    <Container fluid>
+    <Container fluid className={classes.container}>
       <Row>
         <Col md={12}>
           <HomeNavBar />

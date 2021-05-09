@@ -19,7 +19,7 @@ const SideDisplay = () => {
           <div className={classes.details}>
             <span>{dat.name} </span>
             <br />
-            <p>{truncateText(dat.bio, 40)}</p>
+            <p>{truncateText(dat.bio, 70)}</p>
           </div>
           <div className={classes.btnDiv}>
             <button className={classes.button}>Follow</button>

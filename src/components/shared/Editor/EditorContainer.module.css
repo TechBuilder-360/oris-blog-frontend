@@ -4,19 +4,24 @@
 }
 .WrapperEditor {
   margin-top: 7%;
-
 }
 .editor {
   border: 0px;
   margin-bottom:1%;
   height: auto;
+  background-color: #e4eaf1;
+  padding: 1%;
+  border-radius: 0px 0px 10px 10px;
+ 
 }
 
 .btnGroup {
   display: inline-block !important;
   width: 100%;
-  border: 1px solid rgb(253, 247, 247);
-  padding: 2% 0% 0%;
+  border: 0px;
+  padding: 2% 2% 0%;
+  background-color: #e4eaf1;
+
 }
 
 .image{
@@ -35,7 +40,8 @@
 }
 
 .toolbar button[type="button"]:not(.change):hover {
-  background-color: #eee;
+  background-color: #007bff;
+  color:white;
   
 }
 
@@ -43,6 +49,12 @@
   .toolbar button[type="button"] {
     margin: 2px;
     padding: 3px;
+    
+  }
+  .toolbar button[type="button"]:not(.change):hover {
+    background-color: #007bff;
+    color:white;
+    
   }
 
   .editor {

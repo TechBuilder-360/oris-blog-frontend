@@ -33,6 +33,7 @@ const SearchBox = (props) => {
         </i>
         <input
           value={value}
+          placeholder="search for article"
           className={classes.input_field}
           type="text"
           onChange={(event) => triggerSearch(event.target.value)}

@@ -1,70 +1,70 @@
-
-
 body {
-  
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+input[type="text"]:focus {
+  outline: none;
+}
 
-
-.ck-editor__editable_inline{
-  min-height:220px;
+.ck-editor__editable_inline {
+  min-height: 220px;
 }
 
 .change {
-   background-color: rgb(192, 190, 190) !important;
+  background-color: rgb(192, 190, 190) !important;
   border-color: transparent !important;
-  
 }
-.public-DraftEditorPlaceholder-inner{
- margin:0px;
+.public-DraftEditorPlaceholder-inner {
+  margin: 0px;
   font-size: 20pt;
-  font-family: 'Times New Roman', Times, serif;
-  color:rgb(206, 204, 204) !important;
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(206, 204, 204) !important;
   font-weight: 500;
   font-style: italic;
   transition: margin 0.3s ease;
 }
-.public-DraftEditorPlaceholder-root:hover{
-
-  margin:20px;
-      transition: margin 0.3s ease;
+.public-DraftEditorPlaceholder-root:hover {
+  margin: 20px;
+  transition: margin 0.3s ease;
 }
 
 div.DraftEditor-root {
-  border: 0px solid #C0C0C0;
-  height:200px;
+  border: 0px solid #c0c0c0;
+  height: 200px;
   width: auto;
   overflow-y: auto;
 }
 
 div.DraftEditor-editorContainer,
 div.public-DraftEditor-content {
- 
   height: 100%;
 }
 div.DraftEditor-root::-webkit-scrollbar {
   width: 50px;
 }
 div.DraftEditor-root::-webkit-scrollbar-thumb {
-  background: rgb(179, 178, 178);
+  background: #007bff;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 div.DraftEditor-root::-webkit-scrollbar-thumb:hover {
-  background: rgb(165, 164, 164);
+  background: rgb(194, 207, 243);
 }
 div.DraftEditor-root::-webkit-scrollbar-track {
   box-shadow: inset 0 0 1px rgb(179, 178, 178);
   border-radius: 10px;
 }
-
+@media (max-width: 900px) {
+  div.DraftEditor-root::-webkit-scrollbar {
+    width: 10px;
+  }
+}

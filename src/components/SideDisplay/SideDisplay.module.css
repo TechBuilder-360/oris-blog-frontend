@@ -6,9 +6,8 @@
 .sideNav {
   width: 100%;
   height: auto;
-  background: rgb(161, 161, 161);
   margin: 10% 0% 10% 0%;
-  color: rgb(105, 105, 105);
+  color: #007bff;
   padding: 4%;
 }
 .sideNav h4 {
@@ -19,28 +18,28 @@
   max-width: 40%;
 }
 .button {
-  background-color: rgb(192, 190, 190);
-  color: rgb(105, 105, 105);
+  background-color: white;
+  color: #007bff;
   max-width: 100%;
   padding: 15px;
   border-radius: 5px;
-  border-width: 0px;
+  border: 2px solid #007bff;
   font-weight: bold;
 }
 
 .button:hover {
-  background-color: rgb(207, 205, 205);
+  background-color: #007bff;
+  color:white;
 }
 .icon {
   float: left;
   margin-right: 2%;
   width: auto;
-  color: rgb(192, 190, 190);
+  color: #007bff;
 }
 .divBody {
   display: flex;
   flex-direction: row;
-
   width: 100%;
   margin-top: 4%;
 }
@@ -54,6 +53,8 @@
 .details p {
   font-size: 10pt;
   text-align: left;
+  color:rgb(138, 138, 138);
+
 }
 
 /* Desktop view */

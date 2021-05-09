@@ -18,7 +18,7 @@ const HomeNavBar = (props) => {
           <NavLink to={"/"}>Home</NavLink>
           <NavLink to={"/create"}>Create Post</NavLink>
           <Dropdown id="basic">
-            <Dropdown.Toggle variant="secondary">Navigation</Dropdown.Toggle>
+            <Dropdown.Toggle variant="primary">Navigation</Dropdown.Toggle>
 
             <Dropdown.Menu>
               {props.category.map((cat, index) => (
