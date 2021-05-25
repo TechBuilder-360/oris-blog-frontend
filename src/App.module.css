@@ -2,3 +2,6 @@
   padding: 7px;
   margin-top: 30px;
 }
+.container {
+  padding: 0% !important;
+}

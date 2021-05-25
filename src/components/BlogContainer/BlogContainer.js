@@ -1,9 +1,9 @@
 import {
-  faBook,
   faImage,
-  faPencilAlt,
-  faSave,
+  faBookmark,
   faStopwatch,
+  faComment,
+  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import Icon from "../shared/Icon"
 import React from "react";
@@ -49,21 +49,21 @@ const BlogContainer = (props) => {
 
               <div className={classes.left}>
                 <div >
-                  <Button className={classes.btn} variant="primary" size="sm">
-                  <Icon className={classes.icon} size="1x" icon={faBook} />
+                  <Button className={classes.btn} variant="default" size="sm">
+                  <Icon className={classes.icon} size="1x" icon={faUserPlus} />
                   <span>Follow</span>
                   </Button>
                   
                 </div>
                 <div >
-                  <Button className={classes.btn} variant="primary" size="sm">
-                  <Icon className={classes.icon} size="1x" icon={faSave} />
-                  <span>Bookmark</span>
+                  <Button className={classes.btn} variant="default" size="sm">
+                  <Icon className={classes.icon} size="1x" icon={faBookmark} />
+                  <span>Save</span>
                   </Button>
                 </div>
                 <div>
                   <Button className={classes.btn} variant="default" size="sm">
-                  <Icon className={classes.icon} size="1x" icon={faPencilAlt} />
+                  <Icon className={classes.icon} size="1x" icon={faComment} />
                   <span>Comment</span>
                   </Button>
                   

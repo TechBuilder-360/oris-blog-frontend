@@ -10,16 +10,15 @@
 }
 
 .textBox input {
-  background-color: rgb(204, 204, 204);
+  background-color: rgb(218, 228, 236);
 }
 .input-group-text {
-  background: rgb(172, 172, 172) !important;
+  background: rgb(218, 228, 236) !important;
 }
 
 .textBox input:focus {
-  background-color: rgb(211, 210, 210);
+  background-color: rgb(218, 228, 236);
   color: white;
-
   border-bottom: 1px solid rgb(189, 188, 188);
 }
 
@@ -32,7 +31,8 @@
   width: 100%;
   margin-top: 30px;
   margin-bottom: 30px;
-  color: rgb(96, 96, 97) !important;
+  color: #007bff !important;
+  
 }
 
 .icon {
@@ -44,15 +44,16 @@
 .input_field {
   width: 100%;
   padding: 10px;
-  text-align: center;
-  border: 0px;
-  background-color: rgb(218, 216, 214);
-  border-radius: 5px;
-  color: rgb(102, 100, 100);
+  text-align: left;
+  text-indent: 40px;
+  border:0px;
+  background-color: rgb(243, 247, 252);
+  border-radius:5px;
+  color: rgb(188, 189, 190);
   font-size: 13pt;
-  font-weight: 800;
+  font-weight: 200;
   font-style: italic;
-  caret-color: rgb(75, 61, 61);
+  caret-color: rgb(144, 189, 235);
 }
 .input_field:focus {
   outline: none;
