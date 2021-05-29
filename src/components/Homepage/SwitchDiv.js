@@ -2,25 +2,21 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Category from "../Category/Category";
 import Post from "../Post/Post";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-const SwitchDiv = (props) => {
+const SwitchDiv = () => {
+  const post = useSelector(state => state.blog.post)
   return (
     <div>
       <Switch>
         <Route exact path="/:slut" component={Category} />
         <Route path="/">
-          <Post post={props.post} />
+          <Post post={post} />
         </Route>
       </Switch>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    post: state.blog.post,
-  };
-};
 
-export default connect(mapStateToProps)(SwitchDiv);
+export default SwitchDiv;

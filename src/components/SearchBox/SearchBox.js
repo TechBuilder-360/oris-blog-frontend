@@ -1,13 +1,13 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
-import { Col} from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import classes from "./SearchBox.module.css";
-import { connect } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { on_search, search_result } from "../../store/actions/blogAction";
 import Icon from "../shared/Icon";
 
-const SearchBox = (props) => {
+const SearchBox = () => {
+  const posts = useSelector((state) => state.blog.post);
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
 
@@ -15,7 +15,7 @@ const SearchBox = (props) => {
     setValue(e);
     if (e.length > 0) {
       dispatch(on_search(true));
-      var data = props.post.filter((post) =>
+      var data = posts.filter((post) =>
         post.header.toLowerCase().includes(value.toLowerCase())
       );
       dispatch(search_result(data));
@@ -25,26 +25,31 @@ const SearchBox = (props) => {
   }
 
   return (
-    <Col md={12} style={{ padding: "0%" }}>
-      <div className={classes.input_icons}>
-        <i>
-          {" "}
-          <Icon className={classes.icon} icon={faSearch} />{" "}
-        </i>
-        <input
-          value={value}
-          className={classes.input_field}
-          type="text"
-          onChange={(event) => triggerSearch(event.target.value)}
+    <div className={classes.search_elements}>
+      {/* Search Icon */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className={`h-6 w-6 ${classes.icon}`}
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
         />
-      </div>
-    </Col>
+      </svg>
+      <input
+        value={value}
+        className={classes.input_field}
+        type="text"
+        placeholder="search"
+        onChange={(event) => triggerSearch(event.target.value)}
+      />
+    </div>
   );
 };
-const mapStateToProps = (state) => {
-  return {
-    post: state.blog.post,
-  };
-};
 
-export default connect(mapStateToProps)(SearchBox);
+export default SearchBox;

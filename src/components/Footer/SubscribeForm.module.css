@@ -1,0 +1,24 @@
+.subscribe_form {
+  margin-top: 60px;
+}
+
+.subscribe_form input {
+  padding: 10px 15px;
+  border: none;
+  font-size: 15px;
+}
+
+.subscribe_form input:focus {
+  outline: none;
+}
+
+.subscribe_form input:first-of-type {
+  background: #f7f7f7;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.subscribe_form input:last-of-type {
+  background: #455a5c;
+  border-radius: 0px 4px 4px 0px;
+  color: #fff;
+}

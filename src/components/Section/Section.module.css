@@ -1,3 +1,26 @@
-.main {
-  padding: 0% !important;
+.categories_container {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 50px;
+  font-family: "Poppins", sans-serif;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px 0 30px;
+  max-width: 50ch;
+}
+
+.categories span {
+  border: 1px solid #dfdfdf;
+  border-radius: 5px;
+  margin: 5px 15px;
+  padding: 5px 15px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+.categories span:hover {
+  border: 1px solid #40696d;
 }
