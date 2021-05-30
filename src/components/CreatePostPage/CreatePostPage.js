@@ -138,7 +138,7 @@ const CreatePostPage = () => {
               </Col>
               <Col>
                 {tags.length === 2 ? null : (
-                  <Button variant="secondary" onClick={addClick}>
+                  <Button variant="primary" onClick={addClick}>
                     <Icon size="1x" icon={faPlus} />
                     Add
                   </Button>
@@ -147,11 +147,13 @@ const CreatePostPage = () => {
             </Row>
           </Form.Group>
           <Form.Group className={classes.button_group}>
-            <Button variant="secondary" onClick={submit}>
+            <Button variant="primary" onClick={submit}>
               Post
             </Button>
 
-            <Button variant="default">Draft</Button>
+            <Button variant="default">
+              <span className={classes.text}> Draft </span>
+            </Button>
           </Form.Group>
         </Form>
       </Col>

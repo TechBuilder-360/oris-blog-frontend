@@ -101,7 +101,7 @@ function clearAll(){
       
     }
     if (progress < MAX_LENGTH * (90 / 100)) {
-      setVariant("secondary");
+      setVariant("primary");
       setText(newText);
       dispatch(add_text(text));
     }

@@ -1,5 +1,8 @@
 import React from "react";
+
+import { Container, Row, Col } from "react-bootstrap";
 import NavBar from "./components/Navigation/main-navigation";
+import classes from "./App.module.css";
 import Homepage from "./components/Homepage/Homepage";
 import CreatePostPage from "./components/CreatePostPage/CreatePostPage";
 import { Route, Switch } from "react-router-dom";
