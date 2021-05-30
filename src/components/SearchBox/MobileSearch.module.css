@@ -1,0 +1,80 @@
+.Overlay {
+  height: 40%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(69, 90, 92);
+}
+
+.Overlay_Content {
+  position: relative;
+  top: 40%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+.Overlay .Close_btn {
+  position: absolute;
+  top: 25px;
+  right: 45px;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+.Overlay .Close_btn:hover {
+  color: #c4c4c4;
+}
+
+.Overlay input[type="text"] {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 16px;
+  font-size: 15px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.Overlay input[type="text"]:hover {
+  background: #f1f1f1;
+}
+
+.Overlay input[type="text"]:focus {
+  outline: none;
+}
+
+.Overlay .form_icon {
+  float: left;
+  width: 50px;
+  height: 54px;
+  padding: 15px;
+  background: #ddd;
+  color: #000;
+  font-size: 17px;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.Overlay .form_icon:hover {
+  background: #bbb;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  color: #f3f3f3;
+}

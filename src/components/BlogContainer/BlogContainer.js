@@ -1,83 +1,47 @@
-import {
-  faImage,
-  faBookmark,
-  faStopwatch,
-  faComment,
-  faUserPlus,
-} from "@fortawesome/free-solid-svg-icons";
-import Icon from "../shared/Icon"
 import React from "react";
-import { Button, Col, Row } from "react-bootstrap";
 import classes from "./BlogContainer.module.css";
 import { Link } from "react-router-dom";
+import post_image from "../../images/logo.png";
 
-const BlogContainer = (props) => {
+const BlogContainer = ({ post, search, data }) => {
   return (
-    <Col md={12}>
-      {props.post.length > 0 ? (
-        props.post.map((blog, index) => (
-          <Row className={classes.main} key={index}>
-            <Col md={8} sm={8} xs={8}>
-              <div className={classes.header}>
-                <div>
-                  <Icon className={classes.icon} size="1x" icon={faImage} />
-                  <span>{blog.author}</span>
+    <div className={classes.post_container}>
+      {post.length > 0 ? (
+        post.map((blog, index) => (
+          <div className={classes.post_card} key={index}>
+            <Link
+              to={`post/${index}`}
+              className={classes.post_link}
+              key={index}
+            >
+              <img
+                src={post_image}
+                alt="post_image"
+                className={classes.post_image}
+              />
+              <div className={classes.post_details}>
+                <h5 className={classes.post_title}>{blog.header}</h5>
+                <p className={classes.post_summary}>
+                  This is a short exerpt of the blog post. It should be precise
+                  and catchy enough.
+                </p>
+                <div className={classes.post_footer}>
+                  <div className={classes.post_auth}>
+                    <p>{blog.author}</p>
+                    <p>{blog.created_at}</p>
+                  </div>
+                  <div className={classes.post_time}>
+                    <p>{blog.time} read</p>
+                  </div>
                 </div>
               </div>
-              <Link to={`post/${index}`} className={classes.link}>
-                <div className={classes.left}>
-                  <div>
-                    <span>{blog.header}</span>
-                  </div>
-                </div>
-
-                <div className={classes.timer}>
-                  <div>
-                    <i>created on {blog.created_at}</i>{" "}
-                  </div>
-
-                  <div>
-                    <Icon
-                      className={classes.icon}
-                      size="1x"
-                      icon={faStopwatch}
-                    />
-                    <span>{blog.time}</span>
-                  </div>
-                </div>
-              </Link>
-
-              <div className={classes.left}>
-                <div >
-                  <Button className={classes.btn} variant="default" size="sm">
-                  <Icon className={classes.icon} size="1x" icon={faUserPlus} />
-                  <span>Follow</span>
-                  </Button>
-                  
-                </div>
-                <div >
-                  <Button className={classes.btn} variant="default" size="sm">
-                  <Icon className={classes.icon} size="1x" icon={faBookmark} />
-                  <span>Save</span>
-                  </Button>
-                </div>
-                <div>
-                  <Button className={classes.btn} variant="default" size="sm">
-                  <Icon className={classes.icon} size="1x" icon={faComment} />
-                  <span>Comment</span>
-                  </Button>
-                  
-                </div>
-              </div>
-            </Col>
-         
-            <Col md={4} sm={4} xs={4} className={classes.right}>   <Link to={`post/${index}`} className={classes.link}></Link></Col>
-          </Row>
+            </Link>
+          </div>
         ))
       ) : (
-        <h4 style={{ textAlign: "center" }}> No Result</h4>
+        <h4 style={{ textAlign: "center" }}> No Posts</h4>
       )}
-    </Col>
+    </div>
   );
 };
 

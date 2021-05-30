@@ -1,17 +1,18 @@
 import React from "react";
+
 import { Container, Row, Col } from "react-bootstrap";
-import HomeNavBar from "./components/Navigation/main-navigation";
-import Wrapper from "./container/Container";
+import NavBar from "./components/Navigation/main-navigation";
 import classes from "./App.module.css";
 import Homepage from "./components/Homepage/Homepage";
 import CreatePostPage from "./components/CreatePostPage/CreatePostPage";
 import { Route, Switch } from "react-router-dom";
 import Error404 from "./components/Special Page/Error404";
 import SinglePostView from "./components/SinglePostView/SinglePostView";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const routes = (
-    <Switch style={{ paddingLeft: "0" }}>
+    <Switch>
       <Route exact path="/create" component={CreatePostPage} />
       <Route exact path="/post/:id" component={SinglePostView} />
       <Route path="/" component={Homepage} />
@@ -20,16 +21,11 @@ function App() {
   );
 
   return (
-    <Container fluid className={classes.container}>
-      <Row>
-        <Col md={12}>
-          <HomeNavBar />
-        </Col>
-        <Col md={12}>
-          <Wrapper>{routes}</Wrapper>
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <NavBar />
+      <div>{routes}</div>
+      <Footer />
+    </>
   );
 }
 

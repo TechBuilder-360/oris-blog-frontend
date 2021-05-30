@@ -30,3 +30,9 @@ ReactDOM.render(
 serviceWorker.unregister();
 
 
+// Implement hot reload for faster app refresh rate 
+if (module.hot) {
+  module.hot.accept();
+}
+
+

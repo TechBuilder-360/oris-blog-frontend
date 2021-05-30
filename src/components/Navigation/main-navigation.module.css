@@ -1,68 +1,132 @@
+:root {
+  --nav-bg: linear-gradient(180deg, #455a5c 0%, rgb(69, 90, 92) 555.56%);
+  --nav-icon-color: #f3f3f3;
+  --nav-link-color: #fff;
+}
+
 .Nav {
-  height: auto;
-  box-sizing: border-box;
-  background-color: #007bff;
+  font-family: "Merriweather", serif;
+  width: 100%;
+  height: 75px;
+  background: var(--nav-bg);
+  transition: all 0.5s;
+  display: block;
+  z-index: 9999;
 }
 
-.Nav_item {
-  float: none;
+.Main_Nav_Container {
   display: flex;
-  justify-content: space-evenly;
-  padding: 0;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.Nav_item > a {
-  font-size: 15px;
-  font-weight: 700;
-  float: none;
-  padding: 2px 2px;
+.Nav .Nav_Sections_Container {
+  margin-top: 25px;
+}
+
+.Nav .Logo {
+  margin-top: 22px;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 30px;
+  color: var(--nav-link-color);
+}
+
+.Close_btn,
+.Menu_btn {
+  color: var(--nav-icon-color);
+}
+
+.Mobile_Nav_Items {
+  margin-right: 30px;
+  position: relative;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
+}
+
+.Menu_btn {
+  position: absolute;
+  top: 3px;
+  left: 30px;
+  transition: all 0.4s ease-in-out;
+}
+
+.Close_btn {
+  position: absolute;
+  top: 29px;
+  right: 40px;
+  transition: all 0.4s ease-in-out;
+}
+
+.Menu_Items {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: var(--nav-bg);
+  overflow-x: hidden;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+  list-style: none;
   text-align: center;
-  text-decoration: none;
-  color: white;
 }
 
-.Nav_item > a:hover {
-  text-decoration: none;
-  color: #eff3fcc0;
+ul li {
+  margin: 40px 0;
 }
 
-.Logo {
-  padding: 0;
-  height: 50%;
+.Mobile_Link {
+  color: var(--nav-link-color);
+  font-weight: 500;
+  font-size: 20px;
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 754px) {
-  .Nav {
-    width: 100%;
-    height: 100px;
+.Mobile_Link:hover {
+  text-decoration: underline;
+  color: #f3f3f3;
+}
+
+.Desktop_Nav {
+  display: none;
+}
+
+@media screen and (min-width: 620px) {
+  .Mobile_Nav_Items,
+  .Menu_Items {
+    display: none;
   }
-  .Nav_item > a {
+
+  .Desktop_Nav {
+    display: block;
+    transition: all 0.5s ease;
+  }
+
+  .Desktop_Link {
+    color: var(--nav-link-color);
     font-size: 13px;
-  }
-}
-@media (min-width: 760px) {
-  .Nav {
-    width: 100%;
-    height: 80px;
-    box-sizing: border-box;
-    padding: 6px 90px;
+    margin: 2px 15px;
+    transition: all 0.3s ease-in-out;
   }
 
-  .Logo {
-    height: 100%;
+  .Desktop_Link:last-child {
+    margin-right: 0;
   }
 
-  .Nav_item {
-    position: absolute;
-    top: 28px;
-    right: 90px;
-    float: right;
-  }
-
-  .Nav_item > a {
-    padding: 7px 10px;
-    cursor: pointer;
-    text-align: left;
+  .Desktop_Link:hover {
+    text-decoration: underline;
+    color: #f3f3f3;
   }
 }

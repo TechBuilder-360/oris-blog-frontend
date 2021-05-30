@@ -1,47 +1,126 @@
 import React from "react";
 import classes from "./main-navigation.module.css";
-import logo from "../../images/logo.png";
-import { connect } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { Dropdown } from "react-bootstrap";
-import Icon from "../shared/Icon";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
+import MobileSearch from "../SearchBox/MobileSearch";
 
-const HomeNavBar = (props) => {
+const NavBar = (props) => {
+  const openNav = () => {
+    document.getElementById("sidenav").style.width = "100vw";
+    document.getElementById("Menu_btn").style.marginRight = "250px";
+    document.getElementById("Menu_btn").style.display = "none";
+
+    document.body.classList.toggle("lock-scroll");
+  };
+
+  const closeNav = () => {
+    document.getElementById("sidenav").style.width = "0";
+    document.getElementById("Menu_btn").style.marginRight = "0";
+    document.getElementById("Menu_btn").style.display = "block";
+    document.body.classList.toggle("lock-scroll");
+  };
   return (
-    <div>
+    <>
       <nav className={classes.Nav}>
-        <Link to="/">
-          <img src={logo} className={classes.Logo} alt="Oris" />
-        </Link>
-        <div className={classes.Nav_item}>
-          <NavLink to={"/"}>Home</NavLink>
-          <NavLink to={"/create"}>Create Post</NavLink>
-          <Dropdown id="basic">
-            <Dropdown.Toggle variant="primary">Navigation</Dropdown.Toggle>
+        <div className={`App_Container ${classes.Main_Nav_Container}`}>
+          <Link to="/" className={classes.Logo}>
+            <p>Oris</p>
+          </Link>
 
-            <Dropdown.Menu>
-              {props.category.map((cat, index) => (
-                <Dropdown.Item key={index}>
-                  <NavLink to={`/${index}`}>{cat}</NavLink>
-                  <Dropdown.Divider />
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
-          <NavLink to={"#"}>
-            <Icon icon={faLock} /> Log Out
-          </NavLink>
+          <div className={`${classes.Nav_Sections_Container}`}>
+            {/* Mobile Navigation */}
+            <div
+              className={`${classes.Nav_item} ${classes.Mobile_Nav_Container}`}
+            >
+              <div className={classes.Mobile_Nav_Items}>
+                {/* Search Icon */}
+                <MobileSearch />
+
+                {/* Burger Icon */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  onClick={openNav}
+                  className={`h-6 w-6 ${classes.Menu_btn} ${classes.icon}`}
+                  id="Menu_btn"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </div>
+
+              <div id="sidenav" className={classes.Menu_Items}>
+                {/* Close Menu Icon */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  onClick={closeNav}
+                  className={`${classes.icon} ${classes.Close_btn}`}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+
+                <ul id="menu">
+                  <li>
+                    <NavLink
+                      to={"/about"}
+                      className={classes.Mobile_Link}
+                      onClick={closeNav}
+                    >
+                      About Us
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to={"/resources"}
+                      className={classes.Mobile_Link}
+                      onClick={closeNav}
+                    >
+                      Resources
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to={"/sign-up"}
+                      className={classes.Mobile_Link}
+                      onClick={closeNav}
+                    >
+                      Sign Up
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className={classes.Desktop_Nav}>
+              <NavLink className={classes.Desktop_Link} to={"/about"}>
+                About Us
+              </NavLink>
+              <NavLink className={classes.Desktop_Link} to={"/resources"}>
+                Resources
+              </NavLink>
+              <NavLink className={classes.Desktop_Link} to={"/sign-up"}>
+                Sign Up
+              </NavLink>
+            </div>
+          </div>
         </div>
       </nav>
-    </div>
+    </>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    category: state.blog.categories,
-  };
-};
-
-export default connect(mapStateToProps)(HomeNavBar);
+export default NavBar;
