@@ -1,10 +1,8 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 import React, { useState } from "react";
-import { Col } from "react-bootstrap";
 import classes from "./SearchBox.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { on_search, search_result } from "../../store/actions/blogAction";
-import Icon from "../shared/Icon";
 
 const SearchBox = () => {
   const posts = useSelector((state) => state.blog.post);
