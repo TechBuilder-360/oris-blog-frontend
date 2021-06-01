@@ -1,5 +1,7 @@
 .post_container {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  grid-gap: 50px;
   align-self: center;
   justify-self: center;
   font-family: "Poppins", sans-serif;
@@ -79,22 +81,4 @@
 
 .post_time p {
   margin: 0 5px;
-}
-
-@media screen and (min-width: 640px) {
-  .post_link {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 0 1.25rem;
-  }
-
-  .post_image {
-    height: 100%;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .post_container {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
