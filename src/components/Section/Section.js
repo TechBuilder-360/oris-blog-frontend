@@ -15,7 +15,7 @@ const Section = () => {
         <div className={classes.categories_container}>
           <div className={classes.categories}>
             {categories.map((category) => (
-              <span key={category}>{category}</span>
+              <p key={category}>{category}</p>
             ))}
           </div>
         </div>
