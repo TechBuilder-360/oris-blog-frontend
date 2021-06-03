@@ -5,22 +5,28 @@
 }
 
 .categories {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 50px 0 30px;
-  max-width: 50ch;
+  overflow: auto;
+  white-space: nowrap;
+  margin-top: 30px;
 }
 
-.categories span {
+.categories::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.categories p {
+  display: inline-block;
+  text-align: center;
   border: 1px solid #dfdfdf;
   border-radius: 5px;
-  margin: 5px 15px;
+  margin: 10px 10px 5px;
   padding: 5px 15px;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
 }
 
-.categories span:hover {
+.categories p:hover {
   border: 1px solid #40696d;
 }
