@@ -10,12 +10,10 @@
 .post_card {
   display: flex;
   flex-direction: row;
+  margin: 20px;
   box-shadow: 0 0.0775rem 0.3rem rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   overflow: hidden;
-  width: 350px;
-  height: 420px;
-  margin: 20px auto;
 }
 
 .post_image {
@@ -83,4 +81,12 @@
 
 .post_time p {
   margin: 0 5px;
+}
+
+@media screen and (min-width: 620px) {
+  .post_card {
+    width: 300px;
+    height: 420px;
+    margin: auto;
+  }
 }
