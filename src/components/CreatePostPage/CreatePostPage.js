@@ -1,68 +1,65 @@
 import React, { useState } from "react";
-import axios from 'axios'
-import { Row, Col, Form, Button,Alert } from "react-bootstrap";
-import { add_post } from "../../store/actions/blogAction";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
+import axios from "axios";
+import { Row, Col, Form, Button } from "react-bootstrap";
+import { useSelector, shallowEqual } from "react-redux";
 import { faPlus, faImage } from "@fortawesome/free-solid-svg-icons";
 import classes from "./CreatePostPage.module.css";
 import Icon from "../shared/Icon";
 import EditorContainer from "../shared/Editor/EditorContainer";
 import { mapOptions } from "../shared/utility";
-import Toast from 'react-bootstrap/Toast';
+import Toast from "react-bootstrap/Toast";
 
 const CreatePostPage = () => {
   const editorText = useSelector((state) => state.blog.editor, shallowEqual);
   const category = useSelector((state) => state.blog.categories, shallowEqual);
 
-
-  const dispatch = useDispatch();
   const [tags, setTags] = useState([]);
   const [val, setVal] = useState("");
   const [title, setTitle] = useState("");
   const [file, setFile] = useState([]);
   const [isFile, setIsFile] = useState(false);
-  const [image, setImage] = useState([]);
 
-   const [showA, setShowA] = useState(false);
-   const [message, setMessage] = useState('');
-  
-    const closeToast= () => {
-        setShowA(false);
-    }
+  const [showA, setShowA] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const closeToast = () => {
+    setShowA(false);
+  };
 
   function submit() {
-  var  post ={
-      title:title,
-      authorid:'jubril1234',
+    var post = {
+      title: title,
+      authorid: "jubril1234",
       article: editorText,
       categories: tags,
-      status:'published'
+      status: "published",
     };
 
-
-axios.post('https://demo-orisblog-backend.herokuapp.com/api/v1/blog/posts/jubril1234',
- post,{
- headers:{
-  'Content-Type':'application/json'
-}
-}).then(function(res){
-  setShowA(true)
-setMessage('Successfully Added ')
-
-}).catch(function(err){
-  setShowA(true)
-  setMessage('Error Occured ')
-
-})
-  
- //dispatch(add_post(post));
+    axios
+      .post(
+        "https://demo-orisblog-backend.herokuapp.com/api/v1/blog/posts/jubril1234",
+        post,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(function (res) {
+        setShowA(true);
+        setMessage("Successfully Added ");
+      })
+      .catch(function (err) {
+        setShowA(true);
+        setMessage("Error Occured ");
+      });
   }
 
   const clearBox = () => {
     setTags([]);
     setTitle("");
     setVal("");
-    setImage([]);
+    // setImage([]);
   };
 
   const addClick = () => {
@@ -89,7 +86,7 @@ setMessage('Successfully Added ')
 
   const handleChange = (event) => {
     const files = URL.createObjectURL(event.target.files[0]);
-    setImage(event.target.files[0]);
+    // setImage(event.target.files[0]);
     setFile(files);
     setIsFile(true);
   };
@@ -97,10 +94,9 @@ setMessage('Successfully Added ')
   return (
     <Row>
       <Col md={12}>
-      <Toast show={showA} onClose={closeToast} delay={10000} autohide>
-                    
-                    <Toast.Body>{message}</Toast.Body>
-                    </Toast>
+        <Toast show={showA} onClose={closeToast} delay={10000} autohide>
+          <Toast.Body>{message}</Toast.Body>
+        </Toast>
         <Form className={classes.form}>
           <Form.Group>
             <Row>
@@ -120,7 +116,6 @@ setMessage('Successfully Added ')
 
           <Form.Group>
             <EditorContainer clearBox={clearBox} isFile={isFile} file={file} />
-            
           </Form.Group>
 
           <Form.Group>
@@ -163,7 +158,11 @@ setMessage('Successfully Added ')
               </Col>
               <Col>
                 {tags.length === 2 ? null : (
-                  <Button className={classes.btn} variant="primary" onClick={addClick}>
+                  <Button
+                    className={classes.btn}
+                    variant="primary"
+                    onClick={addClick}
+                  >
                     <Icon size="1x" icon={faPlus} />
                     Add
                   </Button>

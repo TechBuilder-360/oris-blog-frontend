@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import "draft-js/dist/Draft.css";
 import {
   btn,
@@ -9,22 +9,12 @@ import {
   TextButton,
   styleMap,
 } from "../Settings";
-import {
-  Editor,
-  EditorState,
-  RichUtils,
-  convertToRaw,
-} from "draft-js";
-import {
-  Image,
-  ProgressBar,
-  Button
-} from "react-bootstrap";
+import { Editor, EditorState, RichUtils, convertToRaw } from "draft-js";
+import { Image, ProgressBar, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import classes from "./EditorContainer.module.css";
 import { add_text } from "../../../store/actions/blogAction";
-import { Col,Tooltip,Overlay} from "react-bootstrap";
-
+import { Col } from "react-bootstrap";
 
 const EditorContainer = (props) => {
   const [editorState, setEditorState] = React.useState(() =>
@@ -37,14 +27,13 @@ const EditorContainer = (props) => {
   const [progress, setProgress] = useState(null);
   const [variant, setVariant] = useState("");
 
+  function clearAll() {
+    setEditorState(EditorState.createEmpty());
+    props.clearBox();
+  }
 
-function clearAll(){
-  setEditorState(EditorState.createEmpty())
-  props.clearBox()
-}
-  
   const handleKeyCommand = (command) => {
-    let editorStat = null
+    let editorStat = null;
     if (!editorState && command === "highlight") {
       editorStat = RichUtils.toggleInlineStyle(editorState, "HIGHLIGHT");
     }
@@ -76,24 +65,24 @@ function clearAll(){
     const selectedTextLength = _getLengthOfSelectedText();
     setProgress(currentContentLength - selectedTextLength);
     const blocks = convertToRaw(editorState.getCurrentContent()).blocks;
-  const mappedBlocks = blocks.map(
-    (block) => (!block.text.trim() && "\n") || block.text
-  );
-  let newText = "";
-  for (let i = 0; i < mappedBlocks.length; i++) {
-    const block = mappedBlocks[i];
+    const mappedBlocks = blocks.map(
+      (block) => (!block.text.trim() && "\n") || block.text
+    );
+    let newText = "";
+    for (let i = 0; i < mappedBlocks.length; i++) {
+      const block = mappedBlocks[i];
 
-    // handle last block
-    if (i === mappedBlocks.length - 1) {
-      newText += block;
-    } else {
-      // otherwise we join with \n, except if the block is already a \n
-      if (block === "\n") newText += block;
-      else newText += block + "\n";
+      // handle last block
+      if (i === mappedBlocks.length - 1) {
+        newText += block;
+      } else {
+        // otherwise we join with \n, except if the block is already a \n
+        if (block === "\n") newText += block;
+        else newText += block + "\n";
+      }
     }
-  }
 
-  setEditorState(editorState);
+    setEditorState(editorState);
     if (
       progress >= MAX_LENGTH * (90 / 100) ||
       progress === MAX_LENGTH * (99 / 100)
@@ -101,20 +90,15 @@ function clearAll(){
       setVariant("warning");
       setText(newText);
       dispatch(add_text(text));
-      
     }
     if (progress < MAX_LENGTH * (90 / 100)) {
       setVariant("primary");
       setText(newText);
       dispatch(add_text(text));
     }
-
-
-    
-    
   };
 
-  const _getLengthOfSelectedText = () =>{
+  const _getLengthOfSelectedText = () => {
     const currentSelection = editorState.getSelection();
     const isCollapsed = currentSelection.isCollapsed();
 
@@ -152,7 +136,6 @@ function clearAll(){
     return length;
   };
 
-
   const _handleBeforeInput = () => {
     const currentContent = editorState.getCurrentContent();
     const currentContentLength = currentContent.getPlainText("").length;
@@ -177,8 +160,6 @@ function clearAll(){
       return "handled";
     }
   };
-
-   
 
   return (
     <Col>
@@ -216,29 +197,18 @@ function clearAll(){
             );
           })}
 
-          <Button variant="secondary" onClick={clearAll} >
-              Clear
-            </Button>  
- 
+          <Button variant="secondary" onClick={clearAll}>
+            Clear
+          </Button>
         </div>
       </div>
-      <Overlay variant="warning"  className={classes.tooltip} target={target.current} show={show} placement="top">
-        {(props) => (
-          <Tooltip variant="warning" id="overlay-example"  {...props}>
-            <div  >
 
-            Make sure to supply minimum text of 1200 characters
-
-            </div>
-                     </Tooltip>
-        )}
-      </Overlay>
-   
-      <div className={classes.editor} ref={target}
-          onClick={() => setShow(!show)}>
-      
+      <div
+        className={classes.editor}
+        ref={target}
+        onClick={() => setShow(!show)}
+      >
         <Editor
-         
           customStyleMap={styleMap}
           placeholder={"Start typing!"}
           editorState={editorState}
@@ -247,22 +217,21 @@ function clearAll(){
           handleKeyCommand={handleKeyCommand}
           onChange={handleChange}
         />
-         <ProgressBar
+        <ProgressBar
           className={classes.progress}
           variant={variant}
           now={progress}
           min={0}
           max={MAX_LENGTH}
         />
-        {props.isFile?
-<Image 
-src={props.file}  
-width={120}
- height={120} 
-className={classes.image}/>
-:null
-}
-
+        {props.isFile ? (
+          <Image
+            src={props.file}
+            width={120}
+            height={120}
+            className={classes.image}
+          />
+        ) : null}
       </div>
     </Col>
   );
