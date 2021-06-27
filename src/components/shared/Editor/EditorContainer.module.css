@@ -15,6 +15,11 @@
  
 }
 
+.tooltip{
+  background-color: #e4eaf1 !important;
+
+}
+
 .btnGroup {
   display: inline-block !important;
   width: 100%;

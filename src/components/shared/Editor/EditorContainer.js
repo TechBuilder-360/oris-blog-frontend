@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import "draft-js/dist/Draft.css";
 import {
   btn,
@@ -23,12 +23,15 @@ import {
 import { useDispatch } from "react-redux";
 import classes from "./EditorContainer.module.css";
 import { add_text } from "../../../store/actions/blogAction";
-import { Col} from "react-bootstrap";
+import { Col,Tooltip,Overlay} from "react-bootstrap";
+
 
 const EditorContainer = (props) => {
   const [editorState, setEditorState] = React.useState(() =>
     EditorState.createEmpty()
   );
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const [progress, setProgress] = useState(null);
@@ -66,7 +69,7 @@ function clearAll(){
     setEditorState(RichUtils.toggleInlineStyle(editorState, style));
   }
 
-  const MAX_LENGTH = 1000;
+  const MAX_LENGTH = 5000;
   const handleChange = (editorState) => {
     const currentContent = editorState.getCurrentContent();
     const currentContentLength = currentContent.getPlainText("").length;
@@ -219,8 +222,23 @@ function clearAll(){
  
         </div>
       </div>
-      <div className={classes.editor}>
+      <Overlay variant="warning"  className={classes.tooltip} target={target.current} show={show} placement="top">
+        {(props) => (
+          <Tooltip variant="warning" id="overlay-example"  {...props}>
+            <div  >
+
+            Make sure to supply minimum text of 1200 characters
+
+            </div>
+                     </Tooltip>
+        )}
+      </Overlay>
+   
+      <div className={classes.editor} ref={target}
+          onClick={() => setShow(!show)}>
+      
         <Editor
+         
           customStyleMap={styleMap}
           placeholder={"Start typing!"}
           editorState={editorState}

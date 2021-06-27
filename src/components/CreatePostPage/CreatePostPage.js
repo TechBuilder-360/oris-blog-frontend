@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Button } from "react-bootstrap";
+import axios from 'axios'
+import { Row, Col, Form, Button,Alert } from "react-bootstrap";
 import { add_post } from "../../store/actions/blogAction";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { faPlus, faImage } from "@fortawesome/free-solid-svg-icons";
@@ -7,17 +8,12 @@ import classes from "./CreatePostPage.module.css";
 import Icon from "../shared/Icon";
 import EditorContainer from "../shared/Editor/EditorContainer";
 import { mapOptions } from "../shared/utility";
+import Toast from 'react-bootstrap/Toast';
 
 const CreatePostPage = () => {
   const editorText = useSelector((state) => state.blog.editor, shallowEqual);
   const category = useSelector((state) => state.blog.categories, shallowEqual);
 
-  let post = {
-    header: "",
-    body: "",
-    tags: [],
-    image: [],
-  };
 
   const dispatch = useDispatch();
   const [tags, setTags] = useState([]);
@@ -27,15 +23,39 @@ const CreatePostPage = () => {
   const [isFile, setIsFile] = useState(false);
   const [image, setImage] = useState([]);
 
+   const [showA, setShowA] = useState(false);
+   const [message, setMessage] = useState('');
+  
+    const closeToast= () => {
+        setShowA(false);
+    }
+
   function submit() {
-    post = {
-      header: title,
-      body: editorText,
-      tags: tags,
-      image: image,
+  var  post ={
+      title:title,
+      authorid:'jubril1234',
+      article: editorText,
+      categories: tags,
+      status:'published'
     };
 
-    dispatch(add_post(post));
+
+axios.post('https://demo-orisblog-backend.herokuapp.com/api/v1/blog/posts/jubril1234',
+ post,{
+ headers:{
+  'Content-Type':'application/json'
+}
+}).then(function(res){
+  setShowA(true)
+setMessage('Successfully Added ')
+
+}).catch(function(err){
+  setShowA(true)
+  setMessage('Error Occured ')
+
+})
+  
+ //dispatch(add_post(post));
   }
 
   const clearBox = () => {
@@ -77,6 +97,10 @@ const CreatePostPage = () => {
   return (
     <Row>
       <Col md={12}>
+      <Toast show={showA} onClose={closeToast} delay={10000} autohide>
+                    
+                    <Toast.Body>{message}</Toast.Body>
+                    </Toast>
         <Form className={classes.form}>
           <Form.Group>
             <Row>
@@ -96,6 +120,7 @@ const CreatePostPage = () => {
 
           <Form.Group>
             <EditorContainer clearBox={clearBox} isFile={isFile} file={file} />
+            
           </Form.Group>
 
           <Form.Group>
@@ -138,7 +163,7 @@ const CreatePostPage = () => {
               </Col>
               <Col>
                 {tags.length === 2 ? null : (
-                  <Button variant="primary" onClick={addClick}>
+                  <Button className={classes.btn} variant="primary" onClick={addClick}>
                     <Icon size="1x" icon={faPlus} />
                     Add
                   </Button>
@@ -147,7 +172,7 @@ const CreatePostPage = () => {
             </Row>
           </Form.Group>
           <Form.Group className={classes.button_group}>
-            <Button variant="primary" onClick={submit}>
+            <Button className={classes.btn} variant="primary" onClick={submit}>
               Post
             </Button>
 

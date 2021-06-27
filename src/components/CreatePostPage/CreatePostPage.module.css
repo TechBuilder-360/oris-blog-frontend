@@ -5,7 +5,7 @@
   
 }
 .text {
-  color: #007bff;
+  color:rgb(69, 90, 92) ;
   font-weight: 900;
 }
 .input {
@@ -25,7 +25,7 @@
 }
 .image {
   cursor: pointer;
-  color: #007bff;
+  color: rgb(69, 90, 92);
 }
 .input:hover {
   background-color: rgb(218, 228, 236);
@@ -36,12 +36,12 @@
   padding: 4px;
   margin: 6px;
   color: white;
-  background-color: #046ad8;
+  background-color: rgb(69, 90, 92);;
   border-radius: 3px;
   border-width: 0px;
 }
 .tag li:hover {
-  background-color: rgb(190, 188, 188);
+  background-color: rgb(69, 90, 92);;
   cursor: pointer;
 }
 .tag {
@@ -90,6 +90,10 @@ input[name="title"]:focus {
   background-color: rgb(218, 228, 236);
 
 }
+.btn{
+  background-color:rgb(69, 90, 92) !important;
+  border:none;
+}
 
 input[name="title"]::-webkit-input-placeholder {
   font-size: 38pt;
@@ -99,11 +103,19 @@ input[name="title"]::-webkit-input-placeholder {
   font-style: italic;
 }
 
+.toast{
+    position: absolute; 
+    top: 0;
+    width: 10rem;
+    z-Index: 10;
+    margin-top: 5px;
+}
 .button_group button {
   margin-left: 10px;
 }
 .button_group {
   margin-top: 50px;
+
 }
 
 @media (max-width: 900px) {
@@ -112,4 +124,11 @@ input[name="title"]::-webkit-input-placeholder {
     padding: 5%;
     width: 100%;
   }
+}
+@media (min-width: 400px) {
+  .tag {
+  margin-left:-37%;
+  width: 100%;
+  list-style: none;
+}
 }
