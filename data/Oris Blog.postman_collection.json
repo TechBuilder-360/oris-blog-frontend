@@ -1,0 +1,450 @@
+{
+	"info": {
+		"_postman_id": "25d57f28-229b-4fb0-b650-27e0e1500f7c",
+		"name": "Oris Blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Comment APIs",
+			"item": [
+				{
+					"name": "Create Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postid\" : \"6061d5a9ada91b11a3809b31\",\r\n    \"authorid\" : \"jb1234\",\r\n    \"text\" : \"Get in there G!!!!!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/comment?commentid=606464956d72762c172128f4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"comment"
+							],
+							"query": [
+								{
+									"key": "commentid",
+									"value": "606464956d72762c172128f4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"606464956d72762c172128f4\",\r\n    \"authorid\": \"jb1234\",\r\n    \"datecreated\": \"2021-03-31T13:01:25.96+01:00\",\r\n    \"likecount\": 0,\r\n    \"likes\": null,\r\n    \"postid\": \"6061d5a9ada91b11a3809b31\",\r\n    \"replies\": null,\r\n    \"repliescount\": 0,\r\n    \"text\": \"Brooo you're capping abeg jare!!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/comment/606464956d72762c172128f4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"comment",
+								"606464956d72762c172128f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/comment/6061d5a9ada91b11a3809b31/60646223e098c7551b365866",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"comment",
+								"6061d5a9ada91b11a3809b31",
+								"60646223e098c7551b365866"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post APIs",
+			"item": [
+				{
+					"name": "Get Post By Query Params",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/post?categories=tech",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"post"
+							],
+							"query": [
+								{
+									"key": "postid",
+									"value": "6061d5a9ada91b11a3809b31",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "draft",
+									"disabled": true
+								},
+								{
+									"key": "authorid",
+									"value": "jubril1234",
+									"disabled": true
+								},
+								{
+									"key": "categories",
+									"value": "tech"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"authorid\": \"jubril1234\",\r\n    \"title\": \"Data modelling\",\r\n    \"categories\": [\r\n        \"religion\"\r\n    ],\r\n    \"article\": \"A conceptual data model is designed with the goal of understanding data in a particular domain. In this example, the model is captured using an Entity-Relationship Diagram (ERD) that documents entity types, relationship types, attribute types, and cardinality and key constraints. The conceptual data model for investment portfolio data features users, accounts, trades and instruments. A user has a unique username and may have other attributes like name. An account has a unique number, cash balance, investment value and total value. A trade is uniquely identified by an id and can be either a buy transaction or a sell transaction. Other trade attribute types include a trade date, number of shares, price per share and total amount. An instrument has a unique symbol and a current quote. Stocks, mutual funds and exchange-traded funds (ETFs) are all types of instruments supported in this example. While a user can open many accounts, each account must belong to exactly one user. Similarly, an account can place many trades and an instrument can participate in many trades, but a trade is always associated with only one account and one instrument. Finally, an account may have many positions and an instrument can be owned by many accounts. Each position in a particular account is described by an instrument symbol, quantity and current value. Note that the diagram has four derived attribute types, namely investment value, total value, current value and amount. Derived attribute values are computed based on other attribute values. For example, a current position value is computed by multiplying a quantity by a quote for a particular instrument. An account investment value is the sum of all current position values. And an account total value is the sum of a cash balance and an investment value. Last but not least, a trade amount is the product of a price and a number of shares. In general, while some derived attribute values can be stored in a database, others can be dynamically computed by an application.\",\r\n    \"status\": \"draft\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://demo-orisblog-backend.herokuapp.com/api/v1/blog/posts/jubril1234",
+							"protocol": "https",
+							"host": [
+								"demo-orisblog-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"posts",
+								"jubril1234"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post By ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"article\": \"The day I learnt to write how to write golang\",\r\n    \"authorid\": \"jubril1234\",\r\n    \"categories\": [\r\n        \"tech\",\r\n        \"code\",\r\n        \"learning\"\r\n    ],\r\n    \"comments\": null,\r\n    \"comments_count\": 0,\r\n    \"datecreated\": \"2021-03-26T08:48:45.915+01:00\",\r\n    \"dateupdated\": \"0001-01-01T01:00:00+01:00\",\r\n    \"id\": \"\",\r\n    \"like_count\": 0,\r\n    \"likes\": null,\r\n    \"slug\": \"best-day-of-my-life\",\r\n    \"status\": \"draft\",\r\n    \"title\": \"Best Day of My life\",\r\n    \"url\": \"https://oris-blog/jubril1234/best-day-of-my-life/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/post/605d91dd1a536e636d92d2cd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"post",
+								"605d91dd1a536e636d92d2cd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/post/603b709c9e8d5849f1e92c9e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"post",
+								"603b709c9e8d5849f1e92c9e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like Post",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/like/jB/603d4eee7f565d8c7f3bfee2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"like",
+								"jB",
+								"603d4eee7f565d8c7f3bfee2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FollowRelationship APIs",
+			"item": [
+				{
+					"name": "Follow User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/follow/userOne/userTwo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"follow",
+								"userOne",
+								"userTwo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch all follow relationships",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/follows?userId=userOne",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"follows"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "userOne"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Follow Struct",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/follows/6087fc364741e2e68ea616bc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"follows",
+								"6087fc364741e2e68ea616bc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/unfollow/userFives/userTwo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"unfollow",
+								"userFives",
+								"userTwo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookmark APIs",
+			"item": [
+				{
+					"name": "Get user bookmarks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Add Post to user bookmarks",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Post from user Bookmarks",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/blog/bookmarks/userThree/postwo/remove",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								"bookmarks",
+								"userThree",
+								"postwo",
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API Docs page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}

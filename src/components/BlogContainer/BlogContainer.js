@@ -3,35 +3,31 @@ import classes from "./BlogContainer.module.css";
 import { Link } from "react-router-dom";
 import post_image from "../../images/logo.png";
 
-const BlogContainer = ({ post, search, data }) => {
+const BlogContainer = ({ post }) => {
+  const { data } = post;
+
+  console.log(data);
   return (
     <div className={classes.post_container}>
-      {post.length > 0 ? (
-        post.map((blog, index) => (
-          <div className={classes.post_card} key={index}>
-            <Link
-              to={`post/${index}`}
-              className={classes.post_link}
-              key={index}
-            >
+      {data.length > 0 ? (
+        data.map((blog, index) => (
+          <div className={classes.post_card} key={blog._id}>
+            <Link to={`post/${blog.slug}`} className={classes.post_link}>
               <img
                 src={post_image}
                 alt="post_image"
                 className={classes.post_image}
               />
               <div className={classes.post_details}>
-                <h5 className={classes.post_title}>{blog.header}</h5>
-                <p className={classes.post_summary}>
-                  This is a short exerpt of the blog post. It should be precise
-                  and catchy enough.
-                </p>
+                <h5 className={classes.post_title}>{blog.title}</h5>
+                <p className={classes.post_summary}>{blog.summary}</p>
                 <div className={classes.post_footer}>
                   <div className={classes.post_auth}>
-                    <p>{blog.author}</p>
-                    <p>{blog.created_at}</p>
+                    <p>{blog.authorid}</p>
+                    <p>{blog.datecreated}</p>
                   </div>
                   <div className={classes.post_time}>
-                    <p>{blog.time} read</p>
+                    <p>{blog.readtime} read</p>
                   </div>
                 </div>
               </div>
