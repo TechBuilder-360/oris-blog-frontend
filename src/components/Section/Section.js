@@ -3,10 +3,7 @@ import BlogContainer from "../BlogContainer/BlogContainer";
 import classes from "./Section.module.css";
 import { useSelector } from "react-redux";
 
-const Section = () => {
-  const post = useSelector((state) => state.blog.post);
-  const data = useSelector((state) => state.blog.data);
-  const search = useSelector((state) => state.blog.search);
+const Section = ({ post }) => {
   const categories = useSelector((state) => state.blog.categories);
 
   return (
@@ -19,7 +16,8 @@ const Section = () => {
             ))}
           </div>
         </div>
-        <BlogContainer post={search ? data : post} />
+
+        <BlogContainer post={post} />
       </div>
     </>
   );
