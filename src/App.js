@@ -16,7 +16,6 @@ function App() {
     axios
       .get("https://demo-orisblog-backend.herokuapp.com/api/v1/blog/posts")
       .then((res) => {
-        console.log(res);
         setPost(res.data);
       });
   }, []);
