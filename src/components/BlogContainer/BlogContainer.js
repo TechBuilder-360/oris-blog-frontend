@@ -6,6 +6,10 @@ import { Spinner } from "react-bootstrap";
 
 const BlogContainer = ({ post }) => {
   const { data } = post;
+
+  const truncate = (str) => {
+    return str.length > 100 ? str.substring(0, 60) + "..." : str;
+  };
   return (
     <div className={classes.post_container}>
       {data ? (
@@ -20,14 +24,16 @@ const BlogContainer = ({ post }) => {
                 />
                 <div className={classes.post_details}>
                   <h5 className={classes.post_title}>{blog.title}</h5>
-                  <p className={classes.post_summary}>{blog.summary}</p>
+                  <p className={classes.post_summary}>
+                    {truncate(blog.summary)}
+                  </p>
                   <div className={classes.post_footer}>
                     <div className={classes.post_auth}>
                       <p>{blog.authorid}</p>
                       <p>{blog.datecreated}</p>
                     </div>
                     <div className={classes.post_time}>
-                      <p>{blog.readtime} read</p>
+                      <p>{blog.readtime}</p>
                     </div>
                   </div>
                 </div>
