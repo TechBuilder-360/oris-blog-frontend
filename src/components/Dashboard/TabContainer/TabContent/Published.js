@@ -25,7 +25,8 @@ useEffect(() =>{
         variant="secondary" 
         animation="border"
          size=" lg"/> 
-         </div>:
+         </div>:(
+           post.length > 0 ?
         post.map((data,index)=>(
          <Card border="light" key={index}>
          <Card.Body>
@@ -36,6 +37,9 @@ useEffect(() =>{
           </Card.Body>
           </Card> 
         ))
+        :
+        <em className={classes.empty}>empty!!</em>
+         )
       }
     </div>
   );

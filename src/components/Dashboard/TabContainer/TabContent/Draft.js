@@ -14,7 +14,6 @@ useEffect(() =>{
   .then((res)=> {
     setData(res.data.data)
     setLoading(false)
-    
   });
 }, [])
 
@@ -27,8 +26,11 @@ useEffect(() =>{
          animation="border" 
          size=" lg"
          />
-         </div>:
-        data.map((da,index)=>(
+         </div>
+         :
+         
+        ( data.length > 0 ?
+          data.map((da,index)=>(
           <Card border="light" key={index}>
           <Card.Body>
         <Card.Title>{da.title}</Card.Title>  
@@ -37,7 +39,9 @@ useEffect(() =>{
           </Card.Text>
         </Card.Body>
           </Card>
-        ))
+        )):
+        <em className={classes.empty}>empty!!</em>
+        )
       }
     </div>
   );
