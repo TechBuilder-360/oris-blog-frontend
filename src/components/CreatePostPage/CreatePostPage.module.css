@@ -104,11 +104,11 @@ input[name="title"]::-webkit-input-placeholder {
 }
 
 .toast{
-    position: absolute; 
+    position:absolute; 
     top: 0;
     width: 10rem;
-    z-Index: 10;
-    margin-top: 5px;
+    z-Index: -1220;
+    margin-top: 0px;
 }
 .button_group button {
   margin-left: 10px;

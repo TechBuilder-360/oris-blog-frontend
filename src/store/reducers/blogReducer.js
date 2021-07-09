@@ -1,21 +1,7 @@
 import * as actionType from "../actions/actionType";
 
 const initialState = {
-  author: [
-    {
-      name: "folayan shola",
-      bio: "this is us in the town of people with no choice whtere is the man that is saty that fhhd sdhdh kfhfh whtere is the man that is saty that fhhd sdhdh kfhfh",
-    },
-    {
-      name: "folayan michael",
-      bio: "this is us in the town of people with no choice whtere is the man that is saty that fhhd sdhdh kfhfh whtere is the man that is saty that fhhd sdhdh kfhfh",
-    },
-
-    {
-      name: "folayan james",
-      bio: "this is us in the town of people with no choice whtere is the man that is saty that fhhd sdhdh kfhfh whtere is the man that is saty that fhhd sdhdh kfhfh",
-    },
-  ],
+  
   categories: [
     "All",
     "Science",
@@ -27,12 +13,11 @@ const initialState = {
     "Music",
   ],
   post: [],
-
   search: false,
-
   data: [],
   editor: "",
 };
+
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -41,12 +26,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         post: [...state.post, action.payload],
       };
+      
     case actionType.ON_SEARCH:
       return {
         ...state,
         search: action.payload,
       };
-
     case actionType.SEARCH_RESULT:
       return {
         ...state,

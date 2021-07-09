@@ -18,7 +18,6 @@ const CreatePostPage = () => {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState([]);
   const [isFile, setIsFile] = useState(false);
-
   const [showA, setShowA] = useState(false);
   const [message, setMessage] = useState("");
 
