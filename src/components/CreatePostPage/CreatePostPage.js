@@ -36,7 +36,7 @@ const CreatePostPage = () => {
 
     axios
       .post(
-        "https://demo-orisblog-backend.herokuapp.com/api/v1/blog/posts/jubril1234",
+        `${process.env.REACT_APP_BACKEND_URL}/posts/jubril1234`,
         post,
         {
           headers: {

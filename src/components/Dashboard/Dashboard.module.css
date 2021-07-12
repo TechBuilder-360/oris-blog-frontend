@@ -1,18 +1,21 @@
-.btn{
-  background: linear-gradient(180deg, #455a5c 0%, rgb(69, 90, 92) 555.56%) !important;
+.btn {
+  background: linear-gradient(
+    180deg,
+    #455a5c 0%,
+    rgb(69, 90, 92) 555.56%
+  ) !important;
   border: none !important;
-border-radius: 0px !important;
+  border-radius: 0px !important;
+  float: right;
 }
 
-.btn:focus{
+.btn:focus {
   outline: none !important;
-  box-shadow:none !important;
+  box-shadow: none !important;
 }
 
-.header{
-  font-weight:800 !important;
+.header {
+  font-weight: 800 !important;
   font-size: 150%;
-  color:#455a5c;
-
+  color: #455a5c;
 }
-

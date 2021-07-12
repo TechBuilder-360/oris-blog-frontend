@@ -14,9 +14,9 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://demo-orisblog-backend.herokuapp.com/api/v1/blog/posts")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/posts`)
       .then((res) => {
-        setPost(res.data)
+        setPost(res.data);
       });
   }, []);
 
@@ -29,11 +29,11 @@ function App() {
       <Route path="*" component={Error404} />
     </Switch>
   );
+  
   return (
     <>
       <NavBar />
       <div>{routes}</div>
-      
       <Footer />
     </>
   );

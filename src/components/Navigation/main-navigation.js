@@ -73,8 +73,7 @@ const NavBar = (props) => {
                 </svg>
 
                 <ul id="menu">
-                  
-                <li>
+                  <li>
                     <NavLink
                       to={"/dashboard"}
                       className={classes.Mobile_Link}
@@ -115,11 +114,10 @@ const NavBar = (props) => {
             </div>
 
             {/* Desktop Navigation */}
-            
-              
+
             <div className={classes.Desktop_Nav}>
-            <NavLink className={classes.Desktop_Link} to={"/dashboard"}>
-              Dashboard
+              <NavLink className={classes.Desktop_Link} to={"/dashboard"}>
+                Dashboard
               </NavLink>
               <NavLink className={classes.Desktop_Link} to={"/about"}>
                 About Us
