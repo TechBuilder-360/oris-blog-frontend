@@ -1,0 +1,16 @@
+.spinner {
+  margin-left: 50%;
+  margin-top: 10%;
+}
+
+.dateText {
+  font-size: 11pt;
+  color: grey;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 15%;
+  color: grey;
+  font-size: 35pt;
+}
