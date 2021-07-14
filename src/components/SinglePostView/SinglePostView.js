@@ -19,7 +19,6 @@ const SinglePostView = (props) => {
 
         const selectedPost = allPost.slice(0, 2);
         setMorePost(selectedPost);
-        console.log(selectedPost);
       });
   }, []);
 

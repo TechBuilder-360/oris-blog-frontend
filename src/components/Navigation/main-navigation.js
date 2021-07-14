@@ -75,6 +75,15 @@ const NavBar = (props) => {
                 <ul id="menu">
                   <li>
                     <NavLink
+                      to={"/dashboard"}
+                      className={classes.Mobile_Link}
+                      onClick={closeNav}
+                    >
+                      Dashoard
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
                       to={"/about"}
                       className={classes.Mobile_Link}
                       onClick={closeNav}
@@ -105,7 +114,11 @@ const NavBar = (props) => {
             </div>
 
             {/* Desktop Navigation */}
+
             <div className={classes.Desktop_Nav}>
+              <NavLink className={classes.Desktop_Link} to={"/dashboard"}>
+                Dashboard
+              </NavLink>
               <NavLink className={classes.Desktop_Link} to={"/about"}>
                 About Us
               </NavLink>
