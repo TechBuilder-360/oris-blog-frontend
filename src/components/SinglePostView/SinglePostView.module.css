@@ -1,0 +1,162 @@
+.post_container {
+  margin: 50px 0 50px;
+}
+
+.article_details,
+.more_post,
+.author_details {
+  border: 2px inset #455a5c;
+  padding: 20px;
+}
+
+.article_details {
+  padding-bottom: 30px;
+}
+
+.article_details img {
+  width: 100%;
+  height: auto;
+}
+
+.article_details h4 {
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 36px;
+  color: #455a5c;
+}
+
+.article_details h4,
+.article_details h6,
+.article_details p {
+  margin: auto;
+}
+
+.article_details h6 {
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #999999;
+}
+
+.article_details p {
+  font-family: "Merriweather", serif;
+  font-size: 16px;
+  line-height: 2.1;
+  margin-top: 40px;
+  /* or 150% */
+
+  color: #43444d;
+}
+
+.post_options {
+  margin-top: 30px;
+  display: grid;
+  width: 100%;
+}
+
+.more_post,
+.author_details {
+  display: block;
+}
+
+.more_post h5 {
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #636363;
+}
+
+.more_post_link_container {
+  border: 2px solid #455a5c;
+  border-radius: 4px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.more_post_link_container h6,
+.more_post_link_container p {
+  color: #636363;
+}
+
+.more_post_link_container h6 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.more_post_link_container p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.author_details {
+  margin-top: 70px;
+  padding-top: 10px;
+}
+
+.author_avatar {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.author_avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.author_avatar h5 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 36px;
+  margin: auto 20px;
+  /* identical to box height */
+
+  color: #455a5c;
+}
+
+.about_author h6 {
+  font-size: 18px;
+  line-height: 30px;
+  /* identical to box height */
+
+  color: #43444d;
+}
+
+.about_author p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 30px;
+}
+
+.author_actions span {
+  margin-right: 10px;
+  padding: 5px 10px 6px;
+  border: 1px solid #636363;
+  border-radius: 20px;
+}
+
+@media screen and (min-width: 620px) {
+  .article_details {
+    padding: 40px 100px;
+  }
+  .article_details p {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+}
+
+@media screen and (min-width: 1200px) {
+  .post_options {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+  }
+
+  .author_details {
+    margin-top: 0;
+  }
+}

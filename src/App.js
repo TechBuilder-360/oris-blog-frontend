@@ -23,8 +23,16 @@ function App() {
   const routes = (
     <Switch>
       <Route exact path="/create" component={CreatePostPage} />
-      <Route exact path="/post/:id" component={SinglePostView} />
-      <Route path="/" render={(props) => <Homepage post={post} {...props} />} />
+      <Route
+        exact
+        path="/post/:id"
+        render={(props) => <SinglePostView post={post} {...props} />}
+      />
+      <Route
+        exact
+        path="/"
+        render={(props) => <Homepage post={post} {...props} />}
+      />
       <Route path="*" component={Error404} />
     </Switch>
   );

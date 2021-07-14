@@ -14,7 +14,7 @@ const BlogContainer = ({ post }) => {
     <div className={classes.post_container}>
       {data ? (
         data.length > 0 ? (
-          data.map((blog, index) => (
+          data.map((blog) => (
             <div className={classes.post_card} key={blog._id}>
               <Link to={`post/${blog.slug}`} className={classes.post_link}>
                 <img
