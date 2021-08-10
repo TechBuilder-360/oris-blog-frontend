@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import "antd/dist/antd.css";
 import * as serviceWorker from "./serviceWorker";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
@@ -9,6 +10,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import blogReducer from "./store/reducers/blogReducer";
 import thunk from "redux-thunk";
+import Auth0Provider from "./components/Auth0/auth0-provider-with-history"
 
 const rootReducer = combineReducers({
   blog: blogReducer,
@@ -25,7 +27,9 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <Auth0Provider>
+        <App />
+      </Auth0Provider>
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

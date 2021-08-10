@@ -2,8 +2,9 @@ import React from "react";
 import classes from "./main-navigation.module.css";
 import { Link, NavLink } from "react-router-dom";
 import MobileSearch from "../SearchBox/MobileSearch";
+import AuthenticationButton from "../Auth0/authentication-button";
 
-const NavBar = (props) => {
+const NavBar = () => {
   const openNav = () => {
     document.getElementById("sidenav").style.width = "100vw";
     document.getElementById("Menu_btn").style.marginRight = "250px";
@@ -101,13 +102,7 @@ const NavBar = (props) => {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink
-                      to={"/sign-up"}
-                      className={classes.Mobile_Link}
-                      onClick={closeNav}
-                    >
-                      Sign Up
-                    </NavLink>
+                    <AuthenticationButton/>
                   </li>
                 </ul>
               </div>
@@ -124,10 +119,8 @@ const NavBar = (props) => {
               </NavLink>
               <NavLink className={classes.Desktop_Link} to={"/resources"}>
                 Resources
-              </NavLink>
-              <NavLink className={classes.Desktop_Link} to={"/sign-up"}>
-                Sign Up
-              </NavLink>
+              </NavLink>             
+              <AuthenticationButton/>
             </div>
           </div>
         </div>
