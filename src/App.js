@@ -8,6 +8,7 @@ import Error404 from "./components/Special Page/Error404";
 import SinglePostView from "./components/SinglePostView/SinglePostView";
 import Footer from "./components/Footer/Footer";
 import Dashboard from "./components/Dashboard/Dashboard";
+import ProtectedRoute from "./components/Auth0/protected-route";
 
 function App() {
   const [post, setPost] = useState([]);
@@ -22,7 +23,7 @@ function App() {
 
   const routes = (
     <Switch>
-      <Route exact path="/create-page" component={CreatePostPage} />
+      <ProtectedRoute exact path="/create-page" component={CreatePostPage} />
       <Route exact path="/post/:id" component={SinglePostView} />
       <Route exact path="/dashboard" component={Dashboard} />
       <Route path="/" render={(props) => <Homepage post={post} {...props} />} />
